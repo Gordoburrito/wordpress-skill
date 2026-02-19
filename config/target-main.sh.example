@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Single main WordPress target (Plesk over SSH).
+# Copy this file to target-main.sh and fill in your values.
+# target-main.sh is gitignored — never commit credentials.
+
+TARGET_SSH_HOST=""
+TARGET_SSH_USER=""
+TARGET_SSH_PORT="22"
+
+# SSH private key path (leave empty to use default agent/key).
+TARGET_SSH_KEY=""
+
+# Plesk PHP path for remote WP-CLI calls.
+TARGET_REMOTE_PHP_DIR=""
+
+# Absolute WordPress root for the target install.
+TARGET_WP_ROOT=""
+
+# Locked remote path that stores ACF JSON.
+TARGET_REMOTE_ACF_JSON_PATH=""
+
+# Site-specific post-deploy WP-CLI command.
+WPCLI_SYNC_COMMAND="wp option get home"
