@@ -1,0 +1,4 @@
+interface:
+  display_name: "ACF Schema Deploy"
+  short_description: "Safe ACF schema edits and WP deploy workflow"
+  default_prompt: "Use $acf-schema-deploy to edit ACF JSON safely, validate changes, and deploy to main WordPress with WP-CLI checks."

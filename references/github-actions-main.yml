@@ -1,0 +1,31 @@
+name: deploy-acf-schema-main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Validate schema
+        run: ./scripts/validate.sh --schema-repo .
+
+      - name: Deploy JSON to main target
+        run: ./scripts/deploy-main.sh --schema-repo .
+
+      - name: Run WP-CLI sync/verify
+        run: ./scripts/wpcli-sync.sh
