@@ -4,13 +4,14 @@
     "title": "_Component-Options",
     "fields": [
         {
-            "ID": 941,
             "key": "field_640914eeec90a",
-            "label": "Hash",
             "name": "hash",
+            "type": "text",
+            "parent": "group_63894140af6e3",
+            "ID": 941,
+            "label": "Hash",
             "aria-label": "",
             "prefix": "acf",
-            "type": "text",
             "value": null,
             "menu_order": 0,
             "instructions": "",
@@ -18,7 +19,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 940,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -33,13 +33,14 @@
             "_valid": 1
         },
         {
-            "ID": 942,
             "key": "field_63894141c1f86",
-            "label": "Component Padding",
             "name": "component_padding",
+            "type": "select",
+            "parent": "group_63894140af6e3",
+            "ID": 942,
+            "label": "Component Padding",
             "aria-label": "",
             "prefix": "acf",
-            "type": "select",
             "value": null,
             "menu_order": 1,
             "instructions": "",
@@ -47,7 +48,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 940,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -78,13 +78,14 @@
             "save_options": 0
         },
         {
-            "ID": 943,
             "key": "field_63894345c1f87",
-            "label": "Component Margins",
             "name": "component_margins",
+            "type": "select",
+            "parent": "group_63894140af6e3",
+            "ID": 943,
+            "label": "Component Margins",
             "aria-label": "",
             "prefix": "acf",
-            "type": "select",
             "value": null,
             "menu_order": 2,
             "instructions": "",
@@ -92,7 +93,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 940,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -123,13 +123,14 @@
             "save_options": 0
         },
         {
-            "ID": 1318,
             "key": "field_670813e18976a",
-            "label": "Hide Component",
             "name": "hide_component",
+            "type": "true_false",
+            "parent": "group_63894140af6e3",
+            "ID": 1318,
+            "label": "Hide Component",
             "aria-label": "",
             "prefix": "acf",
-            "type": "true_false",
             "value": null,
             "menu_order": 3,
             "instructions": "",
@@ -137,7 +138,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 940,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -172,5 +172,7 @@
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
-    "_valid": true
+    "_valid": true,
+    "local": "json",
+    "local_file": "\/var\/www\/vhosts\/roostergrintemplates.com\/api-gordon-acf-demo.roostergrintemplates.com\/wp-content\/themes\/dist\/acf-json\/group_63894140af6e3.json"
 }

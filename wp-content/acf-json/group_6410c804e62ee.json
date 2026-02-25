@@ -4,13 +4,14 @@
     "title": "_Video",
     "fields": [
         {
-            "ID": 933,
             "key": "field_6410c8050518d",
-            "label": "Video",
             "name": "video",
+            "type": "group",
+            "parent": "group_6410c804e62ee",
+            "ID": 933,
+            "label": "Video",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 0,
             "instructions": "",
@@ -18,22 +19,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 932,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "video",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 934,
                     "key": "field_6410cf9b0518e",
-                    "label": "Name",
                     "name": "name",
+                    "type": "text",
+                    "parent": "field_6410c8050518d",
+                    "ID": 934,
+                    "label": "Name",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -41,7 +44,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 933,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -56,13 +58,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 935,
                     "key": "field_6410cfa60518f",
-                    "label": "Poster",
                     "name": "poster",
+                    "type": "group",
+                    "parent": "field_6410c8050518d",
+                    "ID": 935,
+                    "label": "Poster",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -70,22 +73,24 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 933,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "poster",
+                    "_valid": 1,
                     "sub_fields": [
                         {
-                            "ID": 936,
                             "key": "field_6410cfaf05190",
-                            "label": "Src",
                             "name": "src",
+                            "type": "text",
+                            "parent": "field_6410cfa60518f",
+                            "ID": 936,
+                            "label": "Src",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -93,7 +98,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 935,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -108,13 +112,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 937,
                             "key": "field_6410cfb305191",
-                            "label": "Webp",
                             "name": "webp",
+                            "type": "text",
+                            "parent": "field_6410cfa60518f",
+                            "ID": 937,
+                            "label": "Webp",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -122,7 +127,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 935,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -137,13 +141,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 938,
                             "key": "field_6410cfb705192",
-                            "label": "Alt",
                             "name": "alt",
+                            "type": "text",
+                            "parent": "field_6410cfa60518f",
+                            "ID": 938,
+                            "label": "Alt",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -151,7 +156,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 935,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -165,18 +169,17 @@
                             "_name": "alt",
                             "_valid": 1
                         }
-                    ],
-                    "_name": "poster",
-                    "_valid": 1
+                    ]
                 },
                 {
-                    "ID": 939,
                     "key": "field_6410d05605193",
-                    "label": "Src",
                     "name": "src",
+                    "type": "text",
+                    "parent": "field_6410c8050518d",
+                    "ID": 939,
+                    "label": "Src",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "",
@@ -184,7 +187,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 933,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -198,9 +200,7 @@
                     "_name": "src",
                     "_valid": 1
                 }
-            ],
-            "_name": "video",
-            "_valid": 1
+            ]
         }
     ],
     "location": [
@@ -222,5 +222,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "_valid": true
+    "_valid": true,
+    "local": "json",
+    "local_file": "\/var\/www\/vhosts\/roostergrintemplates.com\/api-gordon-acf-demo.roostergrintemplates.com\/wp-content\/themes\/dist\/acf-json\/group_6410c804e62ee.json"
 }

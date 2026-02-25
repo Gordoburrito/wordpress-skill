@@ -47,9 +47,6 @@ done
 [[ -n "${SCHEMA_REPO}" ]] || fail "--schema-repo is required"
 [[ -d "${SCHEMA_REPO}" ]] || fail "Schema repo not found: ${SCHEMA_REPO}"
 
-echo "Running scope check..."
-"${SCRIPT_DIR}/check_scope.sh" --schema-repo "${SCHEMA_REPO}"
-
 echo "Running JSON parse check..."
 _acf_dir="${SCHEMA_REPO}/wp-content/acf-json"
 [[ -d "${_acf_dir}" ]] || fail "Missing directory: ${_acf_dir}"

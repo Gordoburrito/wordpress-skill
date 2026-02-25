@@ -4,13 +4,14 @@
     "title": "SEO - Meta Data",
     "fields": [
         {
-            "ID": 207,
             "key": "field_6067588b6d378",
-            "label": "SEO",
             "name": "seo",
+            "type": "group",
+            "parent": "group_606757d748983",
+            "ID": 207,
+            "label": "SEO",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 0,
             "instructions": "",
@@ -18,22 +19,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 206,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "seo",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 208,
                     "key": "field_606758b66d379",
-                    "label": "Page Title",
                     "name": "page_title",
+                    "type": "text",
+                    "parent": "field_6067588b6d378",
+                    "ID": 208,
+                    "label": "Page Title",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -41,7 +44,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 207,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -56,13 +58,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 209,
                     "key": "field_606758be6d37a",
-                    "label": "Page Description",
                     "name": "page_description",
+                    "type": "textarea",
+                    "parent": "field_6067588b6d378",
+                    "ID": 209,
+                    "label": "Page Description",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "textarea",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -70,7 +73,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 207,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -86,13 +88,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 210,
                     "key": "field_606758ca6d37b",
-                    "label": "Page Keywords",
                     "name": "page_keywords",
+                    "type": "text",
+                    "parent": "field_6067588b6d378",
+                    "ID": 210,
+                    "label": "Page Keywords",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "",
@@ -100,7 +103,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 207,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -115,13 +117,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 217,
                     "key": "field_6067669cf2f76",
-                    "label": "Additional Settings",
                     "name": "additional_settings",
+                    "type": "true_false",
+                    "parent": "field_6067588b6d378",
+                    "ID": 217,
+                    "label": "Additional Settings",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 3,
                     "instructions": "",
@@ -129,7 +132,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 207,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -144,13 +146,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 222,
                     "key": "field_606767b7f2f7c",
-                    "label": "Social Meta",
                     "name": "social_meta",
+                    "type": "group",
+                    "parent": "field_6067588b6d378",
+                    "ID": 222,
+                    "label": "Social Meta",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 4,
                     "instructions": "",
@@ -166,22 +169,24 @@
                             }
                         ]
                     ],
-                    "parent": 207,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "social_meta",
+                    "_valid": 1,
                     "sub_fields": [
                         {
-                            "ID": 218,
                             "key": "field_606766e2f2f77",
-                            "label": "OG Meta",
                             "name": "og_meta",
+                            "type": "group",
+                            "parent": "field_606767b7f2f7c",
+                            "ID": 218,
+                            "label": "OG Meta",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "group",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -189,22 +194,24 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 222,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "layout": "block",
+                            "_name": "og_meta",
+                            "_valid": 1,
                             "sub_fields": [
                                 {
-                                    "ID": 219,
                                     "key": "field_60676747f2f78",
-                                    "label": "Title",
                                     "name": "title",
+                                    "type": "text",
+                                    "parent": "field_606766e2f2f77",
+                                    "ID": 219,
+                                    "label": "Title",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 0,
                                     "instructions": "",
@@ -212,7 +219,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 218,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -227,13 +233,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 220,
                                     "key": "field_6067674ef2f79",
-                                    "label": "Description",
                                     "name": "description",
+                                    "type": "textarea",
+                                    "parent": "field_606766e2f2f77",
+                                    "ID": 220,
+                                    "label": "Description",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "textarea",
                                     "value": null,
                                     "menu_order": 1,
                                     "instructions": "",
@@ -241,7 +248,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 218,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -256,13 +262,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 221,
                                     "key": "field_60676753f2f7a",
-                                    "label": "Image",
                                     "name": "image",
+                                    "type": "text",
+                                    "parent": "field_606766e2f2f77",
+                                    "ID": 221,
+                                    "label": "Image",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 2,
                                     "instructions": "",
@@ -270,7 +277,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 218,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -284,17 +290,11 @@
                                     "_name": "image",
                                     "_valid": 1
                                 }
-                            ],
-                            "_name": "og_meta",
-                            "_valid": 1
+                            ]
                         }
-                    ],
-                    "_name": "social_meta",
-                    "_valid": 1
+                    ]
                 }
-            ],
-            "_name": "seo",
-            "_valid": 1
+            ]
         }
     ],
     "location": [
@@ -323,5 +323,7 @@
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
-    "_valid": true
+    "_valid": true,
+    "local": "json",
+    "local_file": "\/var\/www\/vhosts\/roostergrintemplates.com\/api-gordon-acf-demo.roostergrintemplates.com\/wp-content\/themes\/dist\/acf-json\/group_606757d748983.json"
 }

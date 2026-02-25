@@ -4,13 +4,14 @@
     "title": "Global Data",
     "fields": [
         {
-            "ID": 347,
             "key": "field_6227aa2c1f6ad",
-            "label": "Company Info",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 347,
+            "label": "Company Info",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 0,
             "instructions": "",
@@ -18,7 +19,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -31,13 +31,14 @@
             "selected": 0
         },
         {
-            "ID": 1016,
             "key": "field_65c4544919c46",
-            "label": "Enable Development Mode",
             "name": "enable_development_mode",
+            "type": "true_false",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1016,
+            "label": "Enable Development Mode",
             "aria-label": "",
             "prefix": "acf",
-            "type": "true_false",
             "value": null,
             "menu_order": 1,
             "instructions": "",
@@ -45,7 +46,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -60,13 +60,14 @@
             "_valid": 1
         },
         {
-            "ID": 257,
             "key": "field_61b13a0f514ae",
-            "label": "Company Name",
             "name": "company_name",
+            "type": "text",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 257,
+            "label": "Company Name",
             "aria-label": "",
             "prefix": "acf",
-            "type": "text",
             "value": null,
             "menu_order": 2,
             "instructions": "For the accessibility Statement. This is required.",
@@ -74,7 +75,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -89,13 +89,14 @@
             "_valid": 1
         },
         {
-            "ID": 1371,
             "key": "field_670d7ce1baf83",
-            "label": "Domain",
             "name": "domain",
+            "type": "text",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1371,
+            "label": "Domain",
             "aria-label": "",
             "prefix": "acf",
-            "type": "text",
             "value": null,
             "menu_order": 3,
             "instructions": "This is for the accessibility statement. It is required, and cannot be deleted.",
@@ -103,7 +104,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -119,13 +119,14 @@
             "_valid": 1
         },
         {
-            "ID": 256,
             "key": "field_61b13936514ad",
-            "label": "Email",
             "name": "email",
+            "type": "text",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 256,
+            "label": "Email",
             "aria-label": "",
             "prefix": "acf",
-            "type": "text",
             "value": null,
             "menu_order": 4,
             "instructions": "This is for the accessibility statement. It is required, and cannot be deleted.",
@@ -133,7 +134,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -148,13 +148,14 @@
             "_valid": 1
         },
         {
-            "ID": 252,
             "key": "field_61b1315235ac1",
-            "label": "Phone",
             "name": "phone",
+            "type": "group",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 252,
+            "label": "Phone",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 5,
             "instructions": "Used on the accessibility statement, if the client has multiple locations you can the add primary number here or leave this group blank.",
@@ -162,22 +163,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "row",
+            "_name": "phone",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 254,
                     "key": "field_61b1376d7ce70",
-                    "label": "Number",
                     "name": "number",
+                    "type": "text",
+                    "parent": "field_61b1315235ac1",
+                    "ID": 254,
+                    "label": "Number",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -185,7 +188,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 252,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -200,13 +202,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 255,
                     "key": "field_61b137737ce71",
-                    "label": "href",
                     "name": "href",
+                    "type": "text",
+                    "parent": "field_61b1315235ac1",
+                    "ID": 255,
+                    "label": "href",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -214,7 +217,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 252,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -229,13 +231,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 1205,
                     "key": "field_6704413de0b71",
-                    "label": "aria",
                     "name": "aria",
+                    "type": "text",
+                    "parent": "field_61b1315235ac1",
+                    "ID": 1205,
+                    "label": "aria",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "",
@@ -243,7 +246,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 252,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -257,18 +259,17 @@
                     "_name": "aria",
                     "_valid": 1
                 }
-            ],
-            "_name": "phone",
-            "_valid": 1
+            ]
         },
         {
-            "ID": 561,
             "key": "field_623507cdce10b",
-            "label": "Locations",
             "name": "location",
+            "type": "repeater",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 561,
+            "label": "Locations",
             "aria-label": "",
             "prefix": "acf",
-            "type": "repeater",
             "value": null,
             "menu_order": 6,
             "instructions": "Add Locations here. This populates the block contact section and footer.",
@@ -276,7 +277,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -289,15 +289,17 @@
             "button_label": "Add Location",
             "_name": "location",
             "_valid": 1,
+            "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "ID": 566,
                     "key": "field_62350981ce111",
-                    "label": "Title",
                     "name": "title",
+                    "type": "text",
+                    "parent": "field_623507cdce10b",
+                    "ID": 566,
+                    "label": "Title",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "For multiple practices you can include a practice descriptor here if applicable. For example: \"San Jose Location\"",
@@ -305,7 +307,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -321,13 +322,14 @@
                     "parent_repeater": "field_623507cdce10b"
                 },
                 {
-                    "ID": 562,
                     "key": "field_6235085dce10d",
-                    "label": "Address",
                     "name": "address",
+                    "type": "group",
+                    "parent": "field_623507cdce10b",
+                    "ID": 562,
+                    "label": "Address",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -335,22 +337,25 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "address",
+                    "_valid": 1,
+                    "parent_repeater": "field_623507cdce10b",
                     "sub_fields": [
                         {
-                            "ID": 570,
                             "key": "field_62350de48200d",
-                            "label": "Street",
                             "name": "street",
+                            "type": "text",
+                            "parent": "field_6235085dce10d",
+                            "ID": 570,
+                            "label": "Street",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -358,7 +363,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 562,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -373,13 +377,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 571,
                             "key": "field_62350ded8200e",
-                            "label": "Suite",
                             "name": "suite",
+                            "type": "text",
+                            "parent": "field_6235085dce10d",
+                            "ID": 571,
+                            "label": "Suite",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "Enter Suite or Floor information here. Leave blank if not applicable.",
@@ -387,7 +392,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 562,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -402,13 +406,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 572,
                             "key": "field_62350e188200f",
-                            "label": "City and State",
                             "name": "city_state",
+                            "type": "text",
+                            "parent": "field_6235085dce10d",
+                            "ID": 572,
+                            "label": "City and State",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -416,7 +421,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 562,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -431,13 +435,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 1103,
                             "key": "field_65f9c40f1fca5",
-                            "label": "Coordinates",
                             "name": "coordinates",
+                            "type": "group",
+                            "parent": "field_6235085dce10d",
+                            "ID": 1103,
+                            "label": "Coordinates",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "group",
                             "value": null,
                             "menu_order": 3,
                             "instructions": "",
@@ -445,22 +450,24 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 562,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "layout": "block",
+                            "_name": "coordinates",
+                            "_valid": 1,
                             "sub_fields": [
                                 {
-                                    "ID": 1104,
                                     "key": "field_65f9c43d1fca6",
-                                    "label": "Longitude",
                                     "name": "longitude",
+                                    "type": "text",
+                                    "parent": "field_65f9c40f1fca5",
+                                    "ID": 1104,
+                                    "label": "Longitude",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 0,
                                     "instructions": "",
@@ -468,7 +475,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 1103,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -483,13 +489,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 1105,
                                     "key": "field_65f9c4461fca7",
-                                    "label": "Latitude",
                                     "name": "latitude",
+                                    "type": "text",
+                                    "parent": "field_65f9c40f1fca5",
+                                    "ID": 1105,
+                                    "label": "Latitude",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 1,
                                     "instructions": "",
@@ -497,7 +504,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 1103,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -511,23 +517,19 @@
                                     "_name": "latitude",
                                     "_valid": 1
                                 }
-                            ],
-                            "_name": "coordinates",
-                            "_valid": 1
+                            ]
                         }
-                    ],
-                    "_name": "address",
-                    "_valid": 1,
-                    "parent_repeater": "field_623507cdce10b"
+                    ]
                 },
                 {
-                    "ID": 577,
                     "key": "field_6238ff71f921c",
-                    "label": "Phone",
                     "name": "phone",
+                    "type": "group",
+                    "parent": "field_623507cdce10b",
+                    "ID": 577,
+                    "label": "Phone",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "If a practice has multiple locations and uses different phone numbers per location you can include it here. You should leave this section blank if there's only one location or if a practice uses the same number across multiple locations.",
@@ -535,22 +537,25 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "phone",
+                    "_valid": 1,
+                    "parent_repeater": "field_623507cdce10b",
                     "sub_fields": [
                         {
-                            "ID": 578,
                             "key": "field_6238ff83f921d",
-                            "label": "Number",
                             "name": "number",
+                            "type": "text",
+                            "parent": "field_6238ff71f921c",
+                            "ID": 578,
+                            "label": "Number",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -558,7 +563,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 577,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -573,13 +577,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 579,
                             "key": "field_6238ff89f921e",
-                            "label": "Href",
                             "name": "href",
+                            "type": "text",
+                            "parent": "field_6238ff71f921c",
+                            "ID": 579,
+                            "label": "Href",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -587,7 +592,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 577,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -601,19 +605,17 @@
                             "_name": "href",
                             "_valid": 1
                         }
-                    ],
-                    "_name": "phone",
-                    "_valid": 1,
-                    "parent_repeater": "field_623507cdce10b"
+                    ]
                 },
                 {
-                    "ID": 1188,
                     "key": "field_670439680045d",
-                    "label": "Email",
                     "name": "email",
+                    "type": "text",
+                    "parent": "field_623507cdce10b",
+                    "ID": 1188,
+                    "label": "Email",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 3,
                     "instructions": "",
@@ -621,7 +623,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -637,13 +638,14 @@
                     "parent_repeater": "field_623507cdce10b"
                 },
                 {
-                    "ID": 567,
                     "key": "field_62350aa5ce112",
-                    "label": "Hours",
                     "name": "hours",
+                    "type": "repeater",
+                    "parent": "field_623507cdce10b",
+                    "ID": 567,
+                    "label": "Hours",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "repeater",
                     "value": null,
                     "menu_order": 4,
                     "instructions": "",
@@ -651,7 +653,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -664,15 +665,18 @@
                     "button_label": "Add Row",
                     "_name": "hours",
                     "_valid": 1,
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_623507cdce10b",
                     "sub_fields": [
                         {
-                            "ID": 568,
                             "key": "field_62350ab7ce113",
-                            "label": "Day",
                             "name": "day",
+                            "type": "text",
+                            "parent": "field_62350aa5ce112",
+                            "ID": 568,
+                            "label": "Day",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -680,7 +684,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 567,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -696,13 +699,14 @@
                             "parent_repeater": "field_62350aa5ce112"
                         },
                         {
-                            "ID": 569,
                             "key": "field_62350c1dce114",
-                            "label": "Time",
                             "name": "time",
+                            "type": "text",
+                            "parent": "field_62350aa5ce112",
+                            "ID": 569,
+                            "label": "Time",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -710,7 +714,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 567,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -725,18 +728,17 @@
                             "_valid": 1,
                             "parent_repeater": "field_62350aa5ce112"
                         }
-                    ],
-                    "rows_per_page": 20,
-                    "parent_repeater": "field_623507cdce10b"
+                    ]
                 },
                 {
-                    "ID": 563,
                     "key": "field_62350872ce10e",
-                    "label": "Directions Link",
                     "name": "directions_link",
+                    "type": "group",
+                    "parent": "field_623507cdce10b",
+                    "ID": 563,
+                    "label": "Directions Link",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 5,
                     "instructions": "",
@@ -744,22 +746,25 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "directions_link",
+                    "_valid": 1,
+                    "parent_repeater": "field_623507cdce10b",
                     "sub_fields": [
                         {
-                            "ID": 564,
                             "key": "field_623508a7ce10f",
-                            "label": "href",
                             "name": "href",
+                            "type": "text",
+                            "parent": "field_62350872ce10e",
+                            "ID": 564,
+                            "label": "href",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -767,7 +772,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 563,
                             "wrapper": {
                                 "width": "60",
                                 "class": "",
@@ -782,13 +786,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 565,
                             "key": "field_6235091bce110",
-                            "label": "Label",
                             "name": "label",
+                            "type": "text",
+                            "parent": "field_62350872ce10e",
+                            "ID": 565,
+                            "label": "Label",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "It's advised to not update the default text as it's specific for ADA purposes, however it can be changed here if necessary.",
@@ -796,7 +801,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 563,
                             "wrapper": {
                                 "width": "40",
                                 "class": "",
@@ -810,19 +814,17 @@
                             "_name": "label",
                             "_valid": 1
                         }
-                    ],
-                    "_name": "directions_link",
-                    "_valid": 1,
-                    "parent_repeater": "field_623507cdce10b"
+                    ]
                 },
                 {
-                    "ID": 573,
                     "key": "field_62350ede68dfe",
-                    "label": "Special Note",
                     "name": "special_note",
+                    "type": "textarea",
+                    "parent": "field_623507cdce10b",
+                    "ID": 573,
+                    "label": "Special Note",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "textarea",
                     "value": null,
                     "menu_order": 6,
                     "instructions": "If the client has a special note related to the location, eg (wheelchair access info) enter it here. The text appears under the hours section.",
@@ -830,7 +832,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 561,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -845,17 +846,17 @@
                     "_valid": 1,
                     "parent_repeater": "field_623507cdce10b"
                 }
-            ],
-            "rows_per_page": 20
+            ]
         },
         {
-            "ID": 1017,
             "key": "field_65c4547a19c47",
-            "label": "Styles",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1017,
+            "label": "Styles",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 7,
             "instructions": "",
@@ -863,7 +864,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -876,13 +876,14 @@
             "selected": 0
         },
         {
-            "ID": 1018,
             "key": "field_65c4549619c48",
-            "label": "Colors",
             "name": "colors",
+            "type": "repeater",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1018,
+            "label": "Colors",
             "aria-label": "",
             "prefix": "acf",
-            "type": "repeater",
             "value": null,
             "menu_order": 8,
             "instructions": "",
@@ -890,7 +891,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -907,13 +907,14 @@
             "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 1019,
                     "key": "field_65c454a119c49",
-                    "label": "Label",
                     "name": "label",
+                    "type": "text",
+                    "parent": "field_65c4549619c48",
+                    "ID": 1019,
+                    "label": "Label",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -921,7 +922,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1018,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -937,13 +937,14 @@
                     "parent_repeater": "field_65c4549619c48"
                 },
                 {
-                    "ID": 1020,
                     "key": "field_65c454a919c4a",
-                    "label": "Color",
                     "name": "color",
+                    "type": "color_picker",
+                    "parent": "field_65c4549619c48",
+                    "ID": 1020,
+                    "label": "Color",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "color_picker",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -951,7 +952,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1018,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -970,13 +970,14 @@
             ]
         },
         {
-            "ID": 1021,
             "key": "field_65c454d819c4b",
-            "label": "Typography",
             "name": "typography",
+            "type": "repeater",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1021,
+            "label": "Typography",
             "aria-label": "",
             "prefix": "acf",
-            "type": "repeater",
             "value": null,
             "menu_order": 9,
             "instructions": "",
@@ -984,7 +985,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1001,13 +1001,14 @@
             "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 1022,
                     "key": "field_65c454e819c4c",
-                    "label": "Label",
                     "name": "label",
+                    "type": "text",
+                    "parent": "field_65c454d819c4b",
+                    "ID": 1022,
+                    "label": "Label",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -1015,7 +1016,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1021,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1031,13 +1031,14 @@
                     "parent_repeater": "field_65c454d819c4b"
                 },
                 {
-                    "ID": 1023,
                     "key": "field_65c4551319c4d",
-                    "label": "Font",
                     "name": "font",
+                    "type": "select",
+                    "parent": "field_65c454d819c4b",
+                    "ID": 1023,
+                    "label": "Font",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "select",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -1045,7 +1046,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1021,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1071,13 +1071,14 @@
             ]
         },
         {
-            "ID": 721,
             "key": "field_626b0ef77e444",
-            "label": "Navigation Top Bar",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 721,
+            "label": "Navigation Top Bar",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 10,
             "instructions": "",
@@ -1085,7 +1086,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1098,13 +1098,14 @@
             "selected": 0
         },
         {
-            "ID": 722,
             "key": "field_626b0f317e445",
-            "label": "Top Bar",
             "name": "top_bar",
+            "type": "group",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 722,
+            "label": "Top Bar",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 11,
             "instructions": "",
@@ -1112,22 +1113,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "top_bar",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 723,
                     "key": "field_626b0f447e446",
-                    "label": "Enable Top Bar",
                     "name": "enable_top_bar",
+                    "type": "true_false",
+                    "parent": "field_626b0f317e445",
+                    "ID": 723,
+                    "label": "Enable Top Bar",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "Check this to enable a Navigation Top Bar.",
@@ -1135,7 +1138,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 722,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1150,13 +1152,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 724,
                     "key": "field_626b0f707e447",
-                    "label": "Type",
                     "name": "type",
+                    "type": "radio",
+                    "parent": "field_626b0f317e445",
+                    "ID": 724,
+                    "label": "Type",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "radio",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "Select the type of topbar. Links: Top bar with links (i.e. Address, Phone Number). Announcement: Top bar with modal popup on click.",
@@ -1172,7 +1175,6 @@
                             }
                         ]
                     ],
-                    "parent": 722,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1192,13 +1194,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 725,
                     "key": "field_626b106b7e448",
-                    "label": "Theme",
                     "name": "theme",
+                    "type": "select",
+                    "parent": "field_626b0f317e445",
+                    "ID": 725,
+                    "label": "Theme",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "select",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "Light: topbar-light color. Dark: topbar-dark color. (color variables are set in the color.sass file).",
@@ -1214,7 +1217,6 @@
                             }
                         ]
                     ],
-                    "parent": 722,
                     "wrapper": {
                         "width": "50",
                         "class": "",
@@ -1237,13 +1239,14 @@
                     "save_options": 0
                 },
                 {
-                    "ID": 726,
                     "key": "field_626b15257e449",
-                    "label": "Content Alignment",
                     "name": "content_alignment",
+                    "type": "select",
+                    "parent": "field_626b0f317e445",
+                    "ID": 726,
+                    "label": "Content Alignment",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "select",
                     "value": null,
                     "menu_order": 3,
                     "instructions": "Align content in top bar.",
@@ -1259,7 +1262,6 @@
                             }
                         ]
                     ],
-                    "parent": 722,
                     "wrapper": {
                         "width": "50",
                         "class": "",
@@ -1283,13 +1285,14 @@
                     "save_options": 0
                 },
                 {
-                    "ID": 733,
                     "key": "field_626b178d7cb58",
-                    "label": "Links",
                     "name": "links",
+                    "type": "repeater",
+                    "parent": "field_626b0f317e445",
+                    "ID": 733,
+                    "label": "Links",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "repeater",
                     "value": null,
                     "menu_order": 4,
                     "instructions": "Links and icons in the top bar. It's recommended you check the icon name and confirm it's there before filling out the icon field.",
@@ -1310,7 +1313,6 @@
                             }
                         ]
                     ],
-                    "parent": 722,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1323,15 +1325,17 @@
                     "button_label": "Add Row",
                     "_name": "links",
                     "_valid": 1,
+                    "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "ID": 734,
                             "key": "field_626b17b97cb5a",
-                            "label": "Icon",
                             "name": "icon",
+                            "type": "text",
+                            "parent": "field_626b178d7cb58",
+                            "ID": 734,
+                            "label": "Icon",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -1339,7 +1343,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 733,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1355,13 +1358,14 @@
                             "parent_repeater": "field_626b178d7cb58"
                         },
                         {
-                            "ID": 735,
                             "key": "field_626b17fa7cb5b",
-                            "label": "Text",
                             "name": "text",
+                            "type": "text",
+                            "parent": "field_626b178d7cb58",
+                            "ID": 735,
+                            "label": "Text",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -1369,7 +1373,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 733,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1385,13 +1388,14 @@
                             "parent_repeater": "field_626b178d7cb58"
                         },
                         {
-                            "ID": 736,
                             "key": "field_626b18057cb5c",
-                            "label": "Href",
                             "name": "href",
+                            "type": "text",
+                            "parent": "field_626b178d7cb58",
+                            "ID": 736,
+                            "label": "Href",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -1399,7 +1403,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 733,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1415,13 +1418,14 @@
                             "parent_repeater": "field_626b178d7cb58"
                         },
                         {
-                            "ID": 737,
                             "key": "field_626b18117cb5d",
-                            "label": "Label",
                             "name": "label",
+                            "type": "text",
+                            "parent": "field_626b178d7cb58",
+                            "ID": 737,
+                            "label": "Label",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 3,
                             "instructions": "",
@@ -1429,7 +1433,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 733,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1445,13 +1448,14 @@
                             "parent_repeater": "field_626b178d7cb58"
                         },
                         {
-                            "ID": 738,
                             "key": "field_626b182c7cb5e",
-                            "label": "Open in new window?",
                             "name": "new_window",
+                            "type": "true_false",
+                            "parent": "field_626b178d7cb58",
+                            "ID": 738,
+                            "label": "Open in new window?",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "true_false",
                             "value": null,
                             "menu_order": 4,
                             "instructions": "",
@@ -1459,7 +1463,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 733,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -1474,17 +1477,17 @@
                             "_valid": 1,
                             "parent_repeater": "field_626b178d7cb58"
                         }
-                    ],
-                    "rows_per_page": 20
+                    ]
                 },
                 {
-                    "ID": 727,
                     "key": "field_626b16797cb4f",
-                    "label": "Announcement",
                     "name": "announcement",
+                    "type": "group",
+                    "parent": "field_626b0f317e445",
+                    "ID": 727,
+                    "label": "Announcement",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "group",
                     "value": null,
                     "menu_order": 5,
                     "instructions": "Announcement top bar information. Defaults to using notification icon. If using a different icon it's recommended you check the icon name and confirm it's there before filling out the icon field.",
@@ -1505,22 +1508,24 @@
                             }
                         ]
                     ],
-                    "parent": 722,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "_name": "announcement",
+                    "_valid": 1,
                     "sub_fields": [
                         {
-                            "ID": 728,
                             "key": "field_626b176d7cb56",
-                            "label": "Icon",
                             "name": "icon",
+                            "type": "text",
+                            "parent": "field_626b16797cb4f",
+                            "ID": 728,
+                            "label": "Icon",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -1528,7 +1533,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 727,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1543,13 +1547,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 739,
                             "key": "field_626b596e52309",
-                            "label": "Label",
                             "name": "label",
+                            "type": "text",
+                            "parent": "field_626b16797cb4f",
+                            "ID": 739,
+                            "label": "Label",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -1557,7 +1562,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 727,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1572,13 +1576,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 729,
                             "key": "field_626b17727cb57",
-                            "label": "Text",
                             "name": "text",
+                            "type": "text",
+                            "parent": "field_626b16797cb4f",
+                            "ID": 729,
+                            "label": "Text",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -1586,7 +1591,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 727,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1601,13 +1605,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 740,
                             "key": "field_626b597b5230a",
-                            "label": "Mobile Text",
                             "name": "mobile_text",
+                            "type": "text",
+                            "parent": "field_626b16797cb4f",
+                            "ID": 740,
+                            "label": "Mobile Text",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 3,
                             "instructions": "",
@@ -1615,7 +1620,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 727,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -1630,13 +1634,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 730,
                             "key": "field_626b16c07cb52",
-                            "label": "Modal",
                             "name": "modal",
+                            "type": "group",
+                            "parent": "field_626b16797cb4f",
+                            "ID": 730,
+                            "label": "Modal",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "group",
                             "value": null,
                             "menu_order": 4,
                             "instructions": "Content for the modal popup.",
@@ -1657,22 +1662,24 @@
                                     }
                                 ]
                             ],
-                            "parent": 727,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "layout": "block",
+                            "_name": "modal",
+                            "_valid": 1,
                             "sub_fields": [
                                 {
-                                    "ID": 731,
                                     "key": "field_626b16dc7cb53",
-                                    "label": "Title",
                                     "name": "title",
+                                    "type": "text",
+                                    "parent": "field_626b16c07cb52",
+                                    "ID": 731,
+                                    "label": "Title",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 0,
                                     "instructions": "",
@@ -1680,7 +1687,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 730,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1695,13 +1701,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 732,
                                     "key": "field_626b16e37cb54",
-                                    "label": "Text",
                                     "name": "text",
+                                    "type": "wysiwyg",
+                                    "parent": "field_626b16c07cb52",
+                                    "ID": 732,
+                                    "label": "Text",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "wysiwyg",
                                     "value": null,
                                     "menu_order": 1,
                                     "instructions": "",
@@ -1709,7 +1716,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 730,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1723,26 +1729,21 @@
                                     "_name": "text",
                                     "_valid": 1
                                 }
-                            ],
-                            "_name": "modal",
-                            "_valid": 1
+                            ]
                         }
-                    ],
-                    "_name": "announcement",
-                    "_valid": 1
+                    ]
                 }
-            ],
-            "_name": "top_bar",
-            "_valid": 1
+            ]
         },
         {
-            "ID": 348,
             "key": "field_6227aa381f6ae",
-            "label": "Navigation Info",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 348,
+            "label": "Navigation Info",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 12,
             "instructions": "",
@@ -1750,7 +1751,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1763,13 +1763,14 @@
             "selected": 0
         },
         {
-            "ID": 272,
             "key": "field_621d0b5319fcf",
-            "label": "Nav",
             "name": "nav",
+            "type": "group",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 272,
+            "label": "Nav",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 13,
             "instructions": "",
@@ -1777,22 +1778,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "nav",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 273,
                     "key": "field_621d0b5c19fd0",
-                    "label": "CTA buttons",
                     "name": "cta_buttons",
+                    "type": "true_false",
+                    "parent": "field_621d0b5319fcf",
+                    "ID": 273,
+                    "label": "CTA buttons",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "If the client has no CTA in the navigation uncheck this button and it will remove this section.",
@@ -1800,7 +1803,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 272,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1815,13 +1817,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 1317,
                     "key": "field_6707083a98a33",
-                    "label": "Buttons",
                     "name": "buttons",
+                    "type": "repeater",
+                    "parent": "field_621d0b5319fcf",
+                    "ID": 1317,
+                    "label": "Buttons",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "repeater",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -1837,7 +1840,6 @@
                             }
                         ]
                     ],
-                    "parent": 272,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1854,13 +1856,14 @@
                     "_valid": 1,
                     "sub_fields": [
                         {
-                            "ID": 894,
                             "key": "field_67070726c8d18_field_6377f23ce456f",
-                            "label": "Button",
                             "name": "button",
-                            "aria-label": "",
-                            "prefix": "acf[field_67070726c8d18]",
                             "type": "group",
+                            "parent": "field_6707083a98a33",
+                            "ID": 894,
+                            "label": "Button",
+                            "aria-label": "",
+                            "prefix": "acf",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -1868,22 +1871,29 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 1317,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "layout": "row",
+                            "_name": "button",
+                            "_valid": 1,
+                            "_clone": "field_67070726c8d18",
+                            "__key": "field_6377f23ce456f",
+                            "__name": "button",
+                            "__label": "Button",
+                            "parent_repeater": "field_6707083a98a33",
                             "sub_fields": [
                                 {
-                                    "ID": 895,
                                     "key": "field_6377f271e4571",
-                                    "label": "Type",
                                     "name": "type",
+                                    "type": "select",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 895,
+                                    "label": "Type",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "select",
                                     "value": null,
                                     "menu_order": 0,
                                     "instructions": "",
@@ -1891,7 +1901,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -1918,13 +1927,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 896,
                                     "key": "field_6377f49ee4576",
-                                    "label": "Style",
                                     "name": "style",
+                                    "type": "select",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 896,
+                                    "label": "Style",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "select",
                                     "value": null,
                                     "menu_order": 1,
                                     "instructions": "",
@@ -1932,7 +1942,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -1956,13 +1965,14 @@
                                     "save_options": 0
                                 },
                                 {
-                                    "ID": 897,
                                     "key": "field_6377f261e4570",
-                                    "label": "Label",
                                     "name": "label",
+                                    "type": "text",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 897,
+                                    "label": "Label",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 2,
                                     "instructions": "",
@@ -1970,7 +1980,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -1985,13 +1994,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 898,
                                     "key": "field_6377f48de4575",
-                                    "label": "Aria Label",
                                     "name": "aria_label",
+                                    "type": "text",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 898,
+                                    "label": "Aria Label",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 3,
                                     "instructions": "",
@@ -1999,7 +2009,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -2014,13 +2023,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 899,
                                     "key": "field_6377f41ee4572",
-                                    "label": "href",
                                     "name": "href",
+                                    "type": "text",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 899,
+                                    "label": "href",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 4,
                                     "instructions": "",
@@ -2036,7 +2046,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -2051,13 +2060,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 900,
                                     "key": "field_6377f43ee4573",
-                                    "label": "Path",
                                     "name": "path",
+                                    "type": "text",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 900,
+                                    "label": "Path",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 5,
                                     "instructions": "",
@@ -2073,7 +2083,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -2088,13 +2097,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 901,
                                     "key": "field_6377f46ce4574",
-                                    "label": "Hash",
                                     "name": "hash",
+                                    "type": "text",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 901,
+                                    "label": "Hash",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "text",
                                     "value": null,
                                     "menu_order": 6,
                                     "instructions": "",
@@ -2110,7 +2120,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -2125,13 +2134,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 902,
                                     "key": "field_6377f523e4577",
-                                    "label": "External?",
                                     "name": "external",
+                                    "type": "true_false",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 902,
+                                    "label": "External?",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "true_false",
                                     "value": null,
                                     "menu_order": 7,
                                     "instructions": "If checked, link opens in new window",
@@ -2147,7 +2157,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -2162,13 +2171,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 903,
                                     "key": "field_63782f1aded79",
-                                    "label": "Include Icon?",
                                     "name": "include_icon",
+                                    "type": "true_false",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 903,
+                                    "label": "Include Icon?",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "true_false",
                                     "value": null,
                                     "menu_order": 8,
                                     "instructions": "",
@@ -2176,7 +2186,6 @@
                                     "id": "",
                                     "class": "",
                                     "conditional_logic": 0,
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -2191,13 +2200,14 @@
                                     "_valid": 1
                                 },
                                 {
-                                    "ID": 904,
                                     "key": "field_63780665e0635",
-                                    "label": "Icon",
                                     "name": "icon",
+                                    "type": "select",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 904,
+                                    "label": "Icon",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "select",
                                     "value": null,
                                     "menu_order": 9,
                                     "instructions": "",
@@ -2213,7 +2223,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -2236,13 +2245,14 @@
                                     "save_options": 0
                                 },
                                 {
-                                    "ID": 905,
                                     "key": "field_64b99e1a59304",
-                                    "label": "Color",
                                     "name": "color",
+                                    "type": "radio",
+                                    "parent": "field_67070726c8d18_field_6377f23ce456f",
+                                    "ID": 905,
+                                    "label": "Color",
                                     "aria-label": "",
                                     "prefix": "acf",
-                                    "type": "radio",
                                     "value": null,
                                     "menu_order": 10,
                                     "instructions": "",
@@ -2258,7 +2268,6 @@
                                             }
                                         ]
                                     ],
-                                    "parent": 894,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -2279,25 +2288,19 @@
                                     "_name": "color",
                                     "_valid": 1
                                 }
-                            ],
-                            "_name": "button",
-                            "_valid": 1,
-                            "_clone": "field_67070726c8d18",
-                            "__key": "field_6377f23ce456f",
-                            "__name": "button",
-                            "__label": "Button",
-                            "parent_repeater": "field_6707083a98a33"
+                            ]
                         }
                     ]
                 },
                 {
-                    "ID": 349,
                     "key": "field_6227aa591f6af",
-                    "label": "Floating",
                     "name": "floating",
+                    "type": "true_false",
+                    "parent": "field_621d0b5319fcf",
+                    "ID": 349,
+                    "label": "Floating",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "Uncheck the box below if you want the nav to always have a background. Leave checked for the nav to be \"floating\" or have no background when at the top of the page.",
@@ -2305,7 +2308,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 272,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2319,18 +2321,17 @@
                     "_name": "floating",
                     "_valid": 1
                 }
-            ],
-            "_name": "nav",
-            "_valid": 1
+            ]
         },
         {
-            "ID": 622,
             "key": "field_623b8799cd61d",
-            "label": "Footer Info",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 622,
+            "label": "Footer Info",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 14,
             "instructions": "",
@@ -2338,7 +2339,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2351,13 +2351,14 @@
             "selected": 0
         },
         {
-            "ID": 623,
             "key": "field_623b87a9cd61e",
-            "label": "Footer",
             "name": "footer",
+            "type": "group",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 623,
+            "label": "Footer",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 15,
             "instructions": "",
@@ -2365,22 +2366,24 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "footer",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 624,
                     "key": "field_623b8822cd61f",
-                    "label": "Add'l Links",
                     "name": "addl_links",
+                    "type": "repeater",
+                    "parent": "field_623b87a9cd61e",
+                    "ID": 624,
+                    "label": "Add'l Links",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "repeater",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -2388,7 +2391,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 623,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2401,15 +2403,17 @@
                     "button_label": "Add Row",
                     "_name": "addl_links",
                     "_valid": 1,
+                    "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "ID": 625,
                             "key": "field_623b888dcd620",
-                            "label": "Path",
                             "name": "path",
+                            "type": "text",
+                            "parent": "field_623b8822cd61f",
+                            "ID": 625,
+                            "label": "Path",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "If an external link add the href in this field.",
@@ -2417,7 +2421,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 624,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2433,13 +2436,14 @@
                             "parent_repeater": "field_623b8822cd61f"
                         },
                         {
-                            "ID": 626,
                             "key": "field_623b88a4cd621",
-                            "label": "Hash",
                             "name": "hash",
+                            "type": "text",
+                            "parent": "field_623b8822cd61f",
+                            "ID": 626,
+                            "label": "Hash",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -2447,7 +2451,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 624,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2463,13 +2466,14 @@
                             "parent_repeater": "field_623b8822cd61f"
                         },
                         {
-                            "ID": 627,
                             "key": "field_623b88b2cd622",
-                            "label": "Label",
                             "name": "label",
+                            "type": "text",
+                            "parent": "field_623b8822cd61f",
+                            "ID": 627,
+                            "label": "Label",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -2477,7 +2481,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 624,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2493,13 +2496,14 @@
                             "parent_repeater": "field_623b8822cd61f"
                         },
                         {
-                            "ID": 628,
                             "key": "field_623b88becd623",
-                            "label": "Ext Link?",
                             "name": "ext_link",
+                            "type": "true_false",
+                            "parent": "field_623b8822cd61f",
+                            "ID": 628,
+                            "label": "Ext Link?",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "true_false",
                             "value": null,
                             "menu_order": 3,
                             "instructions": "",
@@ -2507,7 +2511,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 624,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2522,17 +2525,17 @@
                             "_valid": 1,
                             "parent_repeater": "field_623b8822cd61f"
                         }
-                    ],
-                    "rows_per_page": 20
+                    ]
                 },
                 {
-                    "ID": 629,
                     "key": "field_623b93ddd20fb",
-                    "label": "Social Media",
                     "name": "social_media",
+                    "type": "repeater",
+                    "parent": "field_623b87a9cd61e",
+                    "ID": 629,
+                    "label": "Social Media",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "repeater",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "All of the major social platform icons are included in the template. It's recommended you check the icon name and confirm it's there before filling out the icon field.",
@@ -2540,7 +2543,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 623,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2553,15 +2555,17 @@
                     "button_label": "Add Social Media",
                     "_name": "social_media",
                     "_valid": 1,
+                    "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "ID": 630,
                             "key": "field_623b944ad20fc",
-                            "label": "href",
                             "name": "href",
+                            "type": "text",
+                            "parent": "field_623b93ddd20fb",
+                            "ID": 630,
+                            "label": "href",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 0,
                             "instructions": "",
@@ -2569,7 +2573,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 629,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2585,13 +2588,14 @@
                             "parent_repeater": "field_623b93ddd20fb"
                         },
                         {
-                            "ID": 631,
                             "key": "field_623b9450d20fd",
-                            "label": "icon",
                             "name": "icon",
+                            "type": "text",
+                            "parent": "field_623b93ddd20fb",
+                            "ID": 631,
+                            "label": "icon",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -2599,7 +2603,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 629,
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -2614,17 +2617,17 @@
                             "_valid": 1,
                             "parent_repeater": "field_623b93ddd20fb"
                         }
-                    ],
-                    "rows_per_page": 20
+                    ]
                 },
                 {
-                    "ID": 632,
                     "key": "field_623b975b9cd93",
-                    "label": "Light Version",
                     "name": "light",
+                    "type": "true_false",
+                    "parent": "field_623b87a9cd61e",
+                    "ID": 632,
+                    "label": "Light Version",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 2,
                     "instructions": "",
@@ -2632,7 +2635,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 623,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2647,13 +2649,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 633,
                     "key": "field_623b97c29cd94",
-                    "label": "Add Border?",
                     "name": "add_border",
+                    "type": "true_false",
+                    "parent": "field_623b87a9cd61e",
+                    "ID": 633,
+                    "label": "Add Border?",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "true_false",
                     "value": null,
                     "menu_order": 3,
                     "instructions": "",
@@ -2669,7 +2672,6 @@
                             }
                         ]
                     ],
-                    "parent": 623,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2683,18 +2685,17 @@
                     "_name": "add_border",
                     "_valid": 1
                 }
-            ],
-            "_name": "footer",
-            "_valid": 1
+            ]
         },
         {
-            "ID": 1161,
             "key": "field_67042f4745a38",
-            "label": "Popup",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1161,
+            "label": "Popup",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 16,
             "instructions": "",
@@ -2702,7 +2703,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2715,13 +2715,14 @@
             "_valid": 1
         },
         {
-            "ID": 1162,
             "key": "field_67042f5945a39",
-            "label": "Enable Popup",
             "name": "enable_popup",
+            "type": "true_false",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1162,
+            "label": "Enable Popup",
             "aria-label": "",
             "prefix": "acf",
-            "type": "true_false",
             "value": null,
             "menu_order": 17,
             "instructions": "",
@@ -2729,7 +2730,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2744,13 +2744,14 @@
             "_valid": 1
         },
         {
-            "ID": 1163,
             "key": "field_67042f7545a3a",
-            "label": "Popup",
             "name": "popup",
+            "type": "group",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1163,
+            "label": "Popup",
             "aria-label": "",
             "prefix": "acf",
-            "type": "group",
             "value": null,
             "menu_order": 18,
             "instructions": "",
@@ -2766,22 +2767,24 @@
                     }
                 ]
             ],
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "_name": "popup",
+            "_valid": 1,
             "sub_fields": [
                 {
-                    "ID": 1164,
                     "key": "field_67042f8b45a3b",
-                    "label": "Title",
                     "name": "title",
+                    "type": "text",
+                    "parent": "field_67042f7545a3a",
+                    "ID": 1164,
+                    "label": "Title",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "text",
                     "value": null,
                     "menu_order": 0,
                     "instructions": "",
@@ -2789,7 +2792,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1163,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2804,13 +2806,14 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 1165,
                     "key": "field_67042f9145a3c",
-                    "label": "Text",
                     "name": "text",
+                    "type": "textarea",
+                    "parent": "field_67042f7545a3a",
+                    "ID": 1165,
+                    "label": "Text",
                     "aria-label": "",
                     "prefix": "acf",
-                    "type": "textarea",
                     "value": null,
                     "menu_order": 1,
                     "instructions": "",
@@ -2818,7 +2821,6 @@
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1163,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -2834,36 +2836,43 @@
                     "_valid": 1
                 },
                 {
-                    "ID": 921,
                     "key": "field_67057b2537b87_field_637d51dbefa28",
-                    "label": "Image",
                     "name": "image",
-                    "aria-label": "",
-                    "prefix": "acf[field_67057b2537b87]",
                     "type": "group",
+                    "parent": "field_67042f7545a3a",
+                    "ID": 921,
+                    "label": "Image",
+                    "aria-label": "",
+                    "prefix": "acf",
                     "value": null,
-                    "menu_order": 0,
+                    "menu_order": 2,
                     "instructions": "",
                     "required": 0,
                     "id": "",
                     "class": "",
                     "conditional_logic": 0,
-                    "parent": 1163,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "row",
+                    "_name": "image",
+                    "_valid": 1,
+                    "_clone": "field_67057b2537b87",
+                    "__key": "field_637d51dbefa28",
+                    "__name": "image",
+                    "__label": "Image",
                     "sub_fields": [
                         {
-                            "ID": 922,
                             "key": "field_637d5235efa29",
-                            "label": "Content",
                             "name": "",
+                            "type": "tab",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 922,
+                            "label": "Content",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "tab",
                             "value": false,
                             "menu_order": 0,
                             "instructions": "",
@@ -2871,7 +2880,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2884,13 +2892,14 @@
                             "selected": 0
                         },
                         {
-                            "ID": 923,
                             "key": "field_637d5244efa2a",
-                            "label": "src",
                             "name": "src",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 923,
+                            "label": "src",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 1,
                             "instructions": "",
@@ -2898,7 +2907,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2913,13 +2921,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 924,
                             "key": "field_637d5248efa2b",
-                            "label": "webp",
                             "name": "webp",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 924,
+                            "label": "webp",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 2,
                             "instructions": "",
@@ -2927,7 +2936,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2942,13 +2950,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 925,
                             "key": "field_637d5250efa2c",
-                            "label": "alt",
                             "name": "alt",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 925,
+                            "label": "alt",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 3,
                             "instructions": "",
@@ -2956,7 +2965,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2971,13 +2979,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 926,
                             "key": "field_637d525aefa2d",
-                            "label": "Options",
                             "name": "",
+                            "type": "tab",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 926,
+                            "label": "Options",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "tab",
                             "value": false,
                             "menu_order": 4,
                             "instructions": "",
@@ -2985,7 +2994,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2998,13 +3006,14 @@
                             "selected": 0
                         },
                         {
-                            "ID": 1126,
                             "key": "field_65fa67650fa0a",
-                            "label": "Aria Hidden",
                             "name": "aria_hidden",
+                            "type": "true_false",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 1126,
+                            "label": "Aria Hidden",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "true_false",
                             "value": null,
                             "menu_order": 5,
                             "instructions": "",
@@ -3012,7 +3021,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3027,13 +3035,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 927,
                             "key": "field_637d5261efa2e",
-                            "label": "Background Color",
                             "name": "bgColor",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 927,
+                            "label": "Background Color",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 6,
                             "instructions": "",
@@ -3041,7 +3050,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3056,13 +3064,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 928,
                             "key": "field_637d5274efa2f",
-                            "label": "Image Background",
                             "name": "imageBackground",
+                            "type": "true_false",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 928,
+                            "label": "Image Background",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "true_false",
                             "value": null,
                             "menu_order": 7,
                             "instructions": "",
@@ -3070,7 +3079,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3085,13 +3093,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 929,
                             "key": "field_637d528befa30",
-                            "label": "Add Loader",
                             "name": "addLoader",
+                            "type": "true_false",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 929,
+                            "label": "Add Loader",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "true_false",
                             "value": null,
                             "menu_order": 8,
                             "instructions": "",
@@ -3099,7 +3108,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3114,13 +3122,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 930,
                             "key": "field_637d529fefa31",
-                            "label": "Object Position",
                             "name": "objectPosition",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 930,
+                            "label": "Object Position",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 9,
                             "instructions": "",
@@ -3128,7 +3137,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3143,13 +3151,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 931,
                             "key": "field_637d52aeefa32",
-                            "label": "Force Alt",
                             "name": "forceAlt",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 931,
+                            "label": "Force Alt",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 10,
                             "instructions": "",
@@ -3157,7 +3166,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3172,13 +3180,14 @@
                             "_valid": 1
                         },
                         {
-                            "ID": 1127,
                             "key": "field_65fa67790fa0b",
-                            "label": "Loading Mask",
                             "name": "loading_mask",
+                            "type": "text",
+                            "parent": "field_67057b2537b87_field_637d51dbefa28",
+                            "ID": 1127,
+                            "label": "Loading Mask",
                             "aria-label": "",
                             "prefix": "acf",
-                            "type": "text",
                             "value": null,
                             "menu_order": 11,
                             "instructions": "",
@@ -3186,7 +3195,6 @@
                             "id": "",
                             "class": "",
                             "conditional_logic": 0,
-                            "parent": 921,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3200,26 +3208,19 @@
                             "_name": "loading_mask",
                             "_valid": 1
                         }
-                    ],
-                    "_name": "image",
-                    "_valid": 1,
-                    "_clone": "field_67057b2537b87",
-                    "__key": "field_637d51dbefa28",
-                    "__name": "image",
-                    "__label": "Image"
+                    ]
                 }
-            ],
-            "_name": "popup",
-            "_valid": 1
+            ]
         },
         {
-            "ID": 1504,
             "key": "field_6993bfcc3f481",
-            "label": "Greyfinch",
             "name": "",
+            "type": "tab",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1504,
+            "label": "Greyfinch",
             "aria-label": "",
             "prefix": "acf",
-            "type": "tab",
             "value": false,
             "menu_order": 19,
             "instructions": "",
@@ -3227,7 +3228,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -3240,13 +3240,14 @@
             "_valid": 1
         },
         {
-            "ID": 1505,
             "key": "field_6993bfd43f482",
-            "label": "Uses Greyfinch?",
             "name": "uses_greyfinch",
+            "type": "true_false",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1505,
+            "label": "Uses Greyfinch?",
             "aria-label": "",
             "prefix": "acf",
-            "type": "true_false",
             "value": null,
             "menu_order": 20,
             "instructions": "",
@@ -3254,7 +3255,6 @@
             "id": "",
             "class": "",
             "conditional_logic": 0,
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -3270,13 +3270,14 @@
             "_valid": 1
         },
         {
-            "ID": 1506,
             "key": "field_6993bffb3f483",
-            "label": "Greyfinch Embed Src",
             "name": "greyfinch_embed_src",
+            "type": "text",
+            "parent": "group_5f5fa4564ddd4",
+            "ID": 1506,
+            "label": "Greyfinch Embed Src",
             "aria-label": "",
             "prefix": "acf",
-            "type": "text",
             "value": null,
             "menu_order": 21,
             "instructions": "",
@@ -3292,7 +3293,6 @@
                     }
                 ]
             ],
-            "parent": 201,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -3327,5 +3327,7 @@
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
-    "_valid": true
+    "_valid": true,
+    "local": "json",
+    "local_file": "\/var\/www\/vhosts\/roostergrintemplates.com\/api-gordon-acf-demo.roostergrintemplates.com\/wp-content\/themes\/dist\/acf-json\/group_5f5fa4564ddd4.json"
 }

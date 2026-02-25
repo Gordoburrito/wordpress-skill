@@ -35,83 +35,81 @@ done
 [[ -n "${SCHEMA_REPO}" ]] || fail "--schema-repo is required"
 [[ -d "${SCHEMA_REPO}" ]] || fail "Schema repo not found: ${SCHEMA_REPO}"
 
-node - "${SCHEMA_REPO}" <<'JS'
-const fs = require("fs");
-const path = require("path");
+_acf_dir="${SCHEMA_REPO}/wp-content/acf-json"
+[[ -d "${_acf_dir}" ]] || fail "Missing directory: ${_acf_dir}"
 
-const repo = process.argv[2];
-const acfDir = path.join(repo, "wp-content", "acf-json");
+_json_files=()
+while IFS= read -r -d '' f; do
+  _json_files+=("$f")
+done < <(find "${_acf_dir}" -maxdepth 1 -name '*.json' -print0 | sort -z)
 
-if (!fs.existsSync(acfDir) || !fs.statSync(acfDir).isDirectory()) {
-  process.stderr.write(`ERROR: Missing directory: ${acfDir}\n`);
-  process.exit(1);
-}
+[[ ${#_json_files[@]} -gt 0 ]] || fail "No JSON files found under ${_acf_dir}"
 
-const files = fs.readdirSync(acfDir).filter(f => f.endsWith(".json")).sort().map(f => path.join(acfDir, f));
-if (files.length === 0) {
-  process.stderr.write(`ERROR: No JSON files found under ${acfDir}\n`);
-  process.exit(1);
-}
+# jq filter that recursively checks for duplicate sibling field names.
+# Outputs one line per duplicate: "context: duplicate field name 'name'"
+# Exit code 0 regardless; we check output length afterward.
+read -r -d '' JQ_FILTER <<'JQEOF' || true
+# Recursive function: check an array of fields for duplicate sibling names.
+# $context is the path string for error messages.
+def check_fields(context):
+  if type != "array" then empty
+  else
+    . as $arr |
+    # Collect names, find duplicates
+    ([ $arr[] | select(type == "object") | .name // empty | select(type == "string" and length > 0) ]
+      | group_by(.) | map(select(length > 1) | .[0])) as $dups |
+    ($dups[] as $dup | "\(context): duplicate field name '\($dup)'"),
+    # Recurse into each field's sub_fields and layouts
+    ( $arr[] | select(type == "object") |
+      ( (.name // .key // "field") as $child_name |
+        "\(context)/\($child_name)" as $child_ctx |
 
-const issues = [];
+        # sub_fields
+        (if .sub_fields then .sub_fields | check_fields($child_ctx) else empty end),
 
-function checkFields(fields, context) {
-  if (!Array.isArray(fields)) return;
-  const seen = {};
-  for (const field of fields) {
-    if (typeof field !== "object" || field === null) continue;
-    const name = field.name;
-    if (typeof name === "string" && name) {
-      if (seen[name]) issues.push(`${context}: duplicate field name '${name}'`);
-      else seen[name] = true;
-    }
-    let childContext = context;
-    if (typeof name === "string" && name) childContext = `${context}/${name}`;
-    else if (typeof field.key === "string") childContext = `${context}/${field.key}`;
+        # layouts as array
+        (if (.layouts | type) == "array" then
+          .layouts[] | select(type == "object") |
+          (.name // .key // "layout") as $layout_name |
+          (if .sub_fields then .sub_fields | check_fields("\($child_ctx)/layout:\($layout_name)") else empty end)
+        else empty end),
 
-    checkFields(field.sub_fields, childContext);
+        # layouts as object (ACF sometimes uses object keyed by layout key)
+        (if .layouts and ((.layouts | type) == "object") and ((.layouts | type) != "array") then
+          .layouts | to_entries[] | .value | select(type == "object") |
+          (.name // .key // "layout") as $layout_name |
+          (if .sub_fields then .sub_fields | check_fields("\($child_ctx)/layout:\($layout_name)") else empty end)
+        else empty end)
+      )
+    )
+  end;
 
-    const layouts = field.layouts;
-    if (Array.isArray(layouts)) {
-      for (const layout of layouts) {
-        if (typeof layout !== "object" || layout === null) continue;
-        const layoutName = layout.name || layout.key || "layout";
-        checkFields(layout.sub_fields, `${childContext}/layout:${layoutName}`);
-      }
-    }
-    // Handle layouts as object (ACF sometimes uses object keyed by layout key)
-    if (layouts && typeof layouts === "object" && !Array.isArray(layouts)) {
-      for (const [lk, layout] of Object.entries(layouts)) {
-        if (typeof layout !== "object" || layout === null) continue;
-        const layoutName = layout.name || layout.key || lk;
-        checkFields(layout.sub_fields, `${childContext}/layout:${layoutName}`);
-      }
-    }
+# Main: handle top-level as array or single object
+input_filename as $fname |
+(if type == "array" then . else [.] end) |
+to_entries[] |
+.value | select(type == "object") |
+(.title // .key // "group") as $group_label |
+"\($fname):\($group_label)" as $group_ctx |
+(if .fields then .fields | check_fields($group_ctx) else empty end)
+JQEOF
+
+_issues=""
+for _file in "${_json_files[@]}"; do
+  _result=$(jq --raw-output "${JQ_FILTER}" "${_file}" 2>&1) || {
+    fail "Failed to process: ${_file}"
   }
-}
+  if [[ -n "${_result}" ]]; then
+    _issues="${_issues}${_result}"$'\n'
+  fi
+done
 
-for (const filePath of files) {
-  let payload;
-  try {
-    payload = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  } catch (exc) {
-    process.stderr.write(`ERROR: Failed to parse JSON: ${filePath} (${exc.message})\n`);
-    process.exit(1);
-  }
-  const groups = Array.isArray(payload) ? payload : [payload];
-  for (let i = 0; i < groups.length; i++) {
-    const group = groups[i];
-    if (typeof group !== "object" || group === null) continue;
-    const groupLabel = group.title || group.key || `group[${i}]`;
-    checkFields(group.fields, `${path.basename(filePath)}:${groupLabel}`);
-  }
-}
+if [[ -n "${_issues}" ]]; then
+  echo "Duplicate field names detected:" >&2
+  while IFS= read -r _line; do
+    [[ -n "${_line}" ]] && echo "  - ${_line}" >&2
+  done <<< "${_issues}"
+  exit 1
+fi
 
-if (issues.length > 0) {
-  process.stderr.write("Duplicate field names detected:\n");
-  for (const issue of issues) process.stderr.write(`  - ${issue}\n`);
-  process.exit(1);
-}
-
-console.log("Duplicate-name check passed.");
-JS
+echo "Duplicate-name check passed."
