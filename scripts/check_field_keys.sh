@@ -46,6 +46,12 @@ if [[ "${ALLOW_FIELD_KEY_CHANGES}" -eq 1 ]]; then
   exit 0
 fi
 
+if ! command -v node >/dev/null 2>&1; then
+  echo "WARNING: 'node' not found — skipping field-key stability check." >&2
+  echo "Install Node.js to enable this check, or use --allow-field-key-changes to silence." >&2
+  exit 0
+fi
+
 if ! git -C "${SCHEMA_REPO}" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   fail "Schema repo must be a git repository: ${SCHEMA_REPO}"
 fi

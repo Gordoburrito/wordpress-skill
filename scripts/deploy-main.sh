@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: deploy-main.sh --schema-repo <abs-path> [--dry-run]
+Usage: deploy-main.sh --schema-repo <abs-path> [--dry-run] [--allow-field-key-changes]
 
 Deploy wp-content/acf-json from local schema repo to the locked main Plesk target.
 Always runs validation first.
@@ -21,6 +21,7 @@ source "${SCRIPT_DIR}/common.sh"
 
 SCHEMA_REPO=""
 DRY_RUN=0
+ALLOW_FIELD_KEY_CHANGES=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -31,6 +32,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --dry-run)
       DRY_RUN=1
+      shift
+      ;;
+    --allow-field-key-changes)
+      ALLOW_FIELD_KEY_CHANGES=1
       shift
       ;;
     -h|--help)
@@ -50,7 +55,11 @@ done
 require_command rsync
 
 echo "Running validation before deploy..."
-"${SCRIPT_DIR}/validate.sh" --schema-repo "${SCHEMA_REPO}"
+validate_args=(--schema-repo "${SCHEMA_REPO}")
+if [[ "${ALLOW_FIELD_KEY_CHANGES}" -eq 1 ]]; then
+  validate_args+=(--allow-field-key-changes)
+fi
+"${SCRIPT_DIR}/validate.sh" "${validate_args[@]}"
 
 echo "Loading target config..."
 load_target_config
