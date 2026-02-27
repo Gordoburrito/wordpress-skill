@@ -1,174 +1,56 @@
-# ACF WordPress Skills
+# ACF Schema Deploy (API Pull/Push)
 
-Claude Code skills for managing Advanced Custom Fields on a headless WordPress site. Three skills cover the full lifecycle: **schema editing**, **deployment**, and **content management**.
+This skill manages ACF schema JSON through the WordPress plugin API:
 
-## Project Structure
+- Pull from `POST /wp-json/acf-schema/v1/pull`
+- Push to `POST /wp-json/acf-schema/v1/push` (signed)
 
-```
-.
-├── CLAUDE.md                  # Claude Code instructions (auto-loaded)
-├── skills/                    # Skill definitions
-│   ├── workflow.md            # End-to-end workflow (design → live page)
-│   ├── acf-schema-edit.md     # Create/modify ACF field group JSON
-│   ├── acf-schema-deploy.md   # Deploy JSON to WordPress via SSH
-│   ├── wp-acf-content-api.md  # Read/write field values via REST API
-│   └── config.md              # Path configuration reference
-├── acf-schema-edit/           # Schema editing resources & references
-├── acf-schema-deploy/         # Deployment scripts & server config
-│   ├── scripts/               # validate, deploy, import, export, pull
-│   ├── config/                # target-main.sh (SSH config)
-│   └── wp-content/acf-json/   # ACF field group JSON files (11 groups)
-└── wp-acf-content-api/        # Content API scripts & config
-    ├── scripts/               # build-allowlist, pull-content, push-content
-    ├── config/                # target-api.sh (REST API credentials, gitignored)
-    └── runtime/               # Generated allowlists & pulled content
-```
+Local schema remains canonical in `wp-content/acf-json/group_*.json`.
 
-## Quick Start
-
-### 1. Configure credentials
-
-**REST API** (for reading/writing content):
-```bash
-cp wp-acf-content-api/config/target-api.sh.example wp-acf-content-api/config/target-api.sh
-# Edit with your WordPress URL, username, and Application Password
-```
-
-**SSH** (for deploying schema):
-```bash
-cd acf-schema-deploy
-scripts/setup.sh --host <server-ip> --user <ssh-user> --key ~/.ssh/your_key --domain <your-domain.com>
-```
-
-### 2. Build the field allowlist
+## Commands
 
 ```bash
-cd wp-acf-content-api
-scripts/build-allowlist.sh --schema-repo /path/to/acf-schema-deploy
+cd /Users/gordonlewis/wordpress-skill/acf-schema-deploy
+
+# Pull latest schema from WordPress
+scripts/pull.sh --schema-repo .
+
+# Push dry-run (recommended first)
+scripts/push.sh --schema-repo . --dry-run
+
+# Push apply
+scripts/push.sh --schema-repo .
+
+# Intentionally changing field keys
+scripts/push.sh --schema-repo . --allow-field-key-changes
 ```
 
-### 3. Pull current page content
+`scripts/deploy-main.sh` is a backward-compatible alias to `scripts/push.sh`.
+
+## Configure Target
 
 ```bash
-scripts/pull-content.sh --resource-type pages --id 8
+cp config/target-main.sh.example config/target-main.sh
 ```
 
-### 4. Push a content update
+Set in `config/target-main.sh`:
 
-```bash
-# Always dry-run first
-scripts/push-content.sh --resource-type pages --id 8 --payload payload.json --dry-run
+- `TARGET_BASE_URL`
+- `TARGET_API_USER`
+- `TARGET_API_APP_PASSWORD`
+- `TARGET_API_HMAC_SECRET` (or export `ACF_SCHEMA_API_HMAC_SECRET`)
 
-# Then push for real
-scripts/push-content.sh --resource-type pages --id 8 --payload payload.json
-```
+## Validation Model
 
-## Skills Reference
+Validation is server-side in the plugin:
 
-### Schema Editing (`skills/acf-schema-edit.md`)
+- JSON payload structure checks
+- Duplicate sibling field name checks
+- Field-key stability checks (unless `allow_field_key_changes=true`)
+- Signed push verification (HMAC + nonce + timestamp)
+- Optional schema hash lock (`expected_hash`)
 
-Edit ACF field group JSON files locally. Handles new fields, new layouts, new reusable components, and modifications to existing structures.
+## Notes
 
-| Task | What to do |
-|------|-----------|
-| Add a field to an existing layout | Edit the layout's `sub_fields` in the Page Sections JSON |
-| Create a new page section layout | Add a layout entry, clone Tier 1 components |
-| Create a new reusable component | New `group_*.json` file prefixed with `_` |
-| Modify field options | Edit the field's properties, keep `key` and `name` unchanged |
-
-### Schema Deployment (`skills/acf-schema-deploy.md`)
-
-Push JSON files to WordPress and import them into the database. Requires SSH access.
-
-| Command | Script |
-|---------|--------|
-| Validate schema | `scripts/validate.sh --schema-repo .` |
-| Deploy to server | `scripts/deploy-main.sh --schema-repo .` |
-| Import into WP database | `scripts/import-acf-json.sh` |
-| Export from WP database + pull | `scripts/export-acf-json.sh --schema-repo .` |
-| Pull JSON files only | `scripts/pull.sh` |
-| Run remote WP-CLI command | `scripts/wp-remote.sh <command>` |
-
-### Content Management (`skills/wp-acf-content-api.md`)
-
-Read and write ACF field values via the WordPress REST API. Uses Application Passwords for authentication.
-
-| Command | Script |
-|---------|--------|
-| Build field allowlist | `scripts/build-allowlist.sh --schema-repo <path>` |
-| Pull page/post content | `scripts/pull-content.sh --resource-type pages --id <id>` |
-| Push content update | `scripts/push-content.sh --resource-type pages --id <id> --payload <file>` |
-| Run test suite (read-only) | `scripts/run-tests.sh --schema-repo <path> --id <id>` |
-| Run test suite (with writes) | `scripts/run-tests.sh --schema-repo <path> --id <id> --live` |
-
-## Common Workflows
-
-### Update text on an existing page
-
-Content API only — no schema changes needed.
-
-```bash
-cd wp-acf-content-api
-scripts/pull-content.sh --resource-type pages --id 8    # See current values
-# Create payload.json with your changes
-scripts/push-content.sh --resource-type pages --id 8 --payload payload.json --dry-run
-scripts/push-content.sh --resource-type pages --id 8 --payload payload.json
-```
-
-### Add a new section type and populate it
-
-Full skill chain: edit → deploy → content.
-
-```bash
-# 1. Edit schema JSON
-#    (modify acf-schema-deploy/wp-content/acf-json/group_62211673cd81a.json)
-
-# 2. Validate and deploy
-cd acf-schema-deploy
-scripts/validate.sh --schema-repo .
-scripts/deploy-main.sh --schema-repo .
-scripts/import-acf-json.sh
-
-# 3. Rebuild allowlist and push content
-cd ../wp-acf-content-api
-scripts/build-allowlist.sh --schema-repo /path/to/acf-schema-deploy
-scripts/push-content.sh --resource-type pages --id 8 --payload payload.json
-```
-
-### Build a page from a design
-
-Read `skills/workflow.md` for the full process. In short:
-
-1. Map visual sections to existing ACF layouts (20+ available)
-2. Edit schema only if new layouts or fields are needed
-3. Deploy schema changes
-4. Populate content via REST API
-5. Pull content again to verify
-
-## Key Concepts
-
-- **Field names vs field keys**: The REST API uses human-readable names (`seo`, `sections`), not internal keys (`field_abc123`).
-- **Three-tier architecture**: Tier 1 = reusable components (`_Content`, `_Image`, etc.), Tier 2 = page builders with flexible content, Tier 3 = global/meta settings.
-- **Flexible content**: The entire `sections` array must be sent on every update — no partial updates. Every object needs `acf_fc_layout`.
-- **Application Passwords**: Required for REST API writes. Regular WordPress passwords won't work.
-- **GET/POST mismatch**: ACF returns `false` for empty fields, but rejects it on POST. Fix before pushing: `false` → `""` for select fields, `false` → `[]` for arrays.
-
-## Prerequisites
-
-- **jq** and **node** — used by validation scripts
-- **curl** — used by content API scripts
-- **SSH access** — required for schema deployment (not needed for content API)
-- **WordPress Application Password** — required for content writes
-
-## Testing
-
-```bash
-# Read-only tests (safe, no writes)
-cd wp-acf-content-api
-scripts/run-tests.sh --schema-repo /path/to/acf-schema-deploy --id 8
-
-# Full test suite with write + automatic rollback
-scripts/run-tests.sh --schema-repo /path/to/acf-schema-deploy --id 8 --live
-```
-
-All deploy and content scripts support `--dry-run` and `--help`.
+- This flow does not require SSH for day-to-day schema updates.
+- WP-CLI is optional and only needed for server diagnostics or plugin operations.

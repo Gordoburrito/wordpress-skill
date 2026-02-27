@@ -6,26 +6,30 @@ on:
       - main
 
 jobs:
-  validate-and-deploy:
+  push-schema:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup SSH key
+      - name: Write API target config
         shell: bash
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
+          cat > config/target-main.sh <<'EOF'
+          #!/usr/bin/env bash
+          TARGET_BASE_URL="${{ secrets.ACF_SCHEMA_BASE_URL }}"
+          TARGET_API_USER="${{ secrets.ACF_SCHEMA_API_USER }}"
+          TARGET_API_APP_PASSWORD="${{ secrets.ACF_SCHEMA_API_APP_PASSWORD }}"
+          TARGET_API_HMAC_SECRET="${{ secrets.ACF_SCHEMA_API_HMAC_SECRET }}"
+          TARGET_API_PULL_PATH="/wp-json/acf-schema/v1/pull"
+          TARGET_API_PUSH_PATH="/wp-json/acf-schema/v1/push"
+          TARGET_API_PUSH_ROUTE="/acf-schema/v1/push"
+          TARGET_CURL_TIMEOUT="30"
+          EOF
+          chmod 600 config/target-main.sh
 
-      - name: Validate schema
-        run: ./scripts/validate.sh --schema-repo .
+      - name: Push dry-run
+        run: ./scripts/push.sh --schema-repo . --dry-run
 
-      - name: Deploy JSON to main target
-        run: ./scripts/deploy-main.sh --schema-repo .
-
-      - name: Run WP-CLI sync/verify
-        run: ./scripts/wpcli-sync.sh
+      - name: Push apply
+        run: ./scripts/push.sh --schema-repo .

@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
 
-# Single main WordPress target (Plesk over SSH).
+# Single main WordPress target via ACF Schema API plugin.
 # Copy this file to target-main.sh and fill in your values.
 # target-main.sh is gitignored — never commit credentials.
 
-TARGET_SSH_HOST=""
-TARGET_SSH_USER=""
-TARGET_SSH_PORT="22"
+TARGET_BASE_URL="https://example.com"
 
-# SSH private key path (leave empty to use default agent/key).
-TARGET_SSH_KEY=""
+# WordPress API auth (Application Password user).
+# You can also set WP_API_USER / WP_API_APP_PASSWORD env vars instead.
+TARGET_API_USER=""
+TARGET_API_APP_PASSWORD=""
 
-# Plesk PHP path for remote WP-CLI calls.
-TARGET_REMOTE_PHP_DIR=""
+# HMAC signing secret for push requests.
+# Use env var ACF_SCHEMA_API_HMAC_SECRET in CI or set here locally.
+TARGET_API_HMAC_SECRET=""
 
-# Absolute WordPress root for the target install.
-TARGET_WP_ROOT=""
-
-# Locked remote path that stores ACF JSON.
-TARGET_REMOTE_ACF_JSON_PATH=""
-
-# Site-specific post-deploy WP-CLI command.
-WPCLI_SYNC_COMMAND="wp option get home"
+# Optional overrides.
+TARGET_API_PULL_PATH="/wp-json/acf-schema/v1/pull"
+TARGET_API_PUSH_PATH="/wp-json/acf-schema/v1/push"
+TARGET_API_PUSH_ROUTE="/acf-schema/v1/push"
+TARGET_CURL_TIMEOUT="30"

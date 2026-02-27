@@ -1,42 +1,18 @@
-# WP-CLI Requirement (Plesk)
+# WP-CLI Role in API Flow
 
-This skill requires WP-CLI on the Plesk server.
-WP-CLI runs on the server and targets each domain via `--path=<wp_root>`.
+WP-CLI is not required for normal schema pull/push once the plugin API is installed.
 
-## Install WP-CLI on server
-If WP-CLI is missing:
+## Required for day-to-day workflow
 
-```bash
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-php wp-cli.phar --info
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
-```
+- `scripts/pull.sh`: No WP-CLI required.
+- `scripts/push.sh`: No WP-CLI required.
 
-Verify:
+## Optional WP-CLI use cases
 
-```bash
-wp --info
-wp --path='/var/www/vhosts/example.com/httpdocs' core version
-```
+- Plugin deployment/activation from shell
+- Server diagnostics (`wp option get home`, plugin status checks)
+- Emergency export/import outside the API flow
 
-## Why WP-CLI is required in this workflow
-- Remote sanity check: `wp option get home`
-- Locked path enforcement: compare `acf_get_setting("save_json")` with configured deploy path
-- Post-deploy action: run `WPCLI_SYNC_COMMAND`
+## Recommendation
 
-## Sync command configuration
-Set `WPCLI_SYNC_COMMAND` in `config/target-main.sh`.
-
-Example placeholder patterns:
-
-```bash
-WPCLI_SYNC_COMMAND="wp acf sync --all"
-```
-
-```bash
-WPCLI_SYNC_COMMAND="wp eval 'do_action(\"acf_schema_sync\");'"
-```
-
-Use the command supported by your site.
-If command behavior changes by plugin/version, keep it site-specific in config.
+Keep WP-CLI installed on Plesk for operational recovery, but treat it as an admin tool, not the schema transport path.

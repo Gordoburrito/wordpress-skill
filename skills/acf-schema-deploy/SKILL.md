@@ -1,93 +1,83 @@
 ---
 name: acf-schema-deploy
-description: Safely manage ACF schema-as-code for headless WordPress on a single Plesk-hosted main environment using local JSON edits, validation, diff review, and SSH/rsync deployment with required WP-CLI verification. Use when requests involve wp-content/acf-json updates, schema validation, or main-environment schema deployment.
+description: Safely manage ACF schema-as-code for headless WordPress through a pull/push API workflow. Use when requests involve wp-content/acf-json updates, schema pull, or schema push to the single main WordPress backend.
 ---
 
 # ACF Schema Deploy
 
 ## Purpose
-Use this skill to edit and deploy ACF field-group JSON with strict scope control.
-Treat schema as code: local Git repo is canonical, WordPress is runtime.
+Use this skill for a strict two-command schema workflow:
+1. Pull schema from WordPress plugin API to local JSON.
+2. Push local JSON back through the plugin API.
+
+Schema remains canonical in local Git under `wp-content/acf-json/**`.
+Validation, duplicate checks, and field-key stability checks are enforced server-side by the plugin.
 
 ## Required Inputs
-- Local schema repo absolute path
-- Schema change request
-- Confirmation that deployment to `main` should occur (deploy is push-triggered in CI)
+- Local schema repo absolute path.
+- Schema change request.
+- Target is always single `main` backend.
 
 ## Hard Guardrails
 - Edit only `wp-content/acf-json/**` inside the schema repo.
 - Never edit frontend repositories.
 - Never read secrets (`.env`, `wp-config.php`, SSH private keys).
-- Never run arbitrary shell commands outside the declared scripts.
-- Always run validation before deployment.
-- Require WP-CLI on the remote Plesk server.
+- Never run arbitrary shell commands outside declared scripts.
+- Use only `pull.sh` and `push.sh` for schema transport.
+- Push uses signed requests (HMAC) and optimistic lock (`expected_hash`).
 
-## Quick Start (Round-Trip)
+## Quick Start
 ```bash
 cd /Users/gordonlewis/wordpress-skill/acf-schema-deploy
 
-# Export from WP database → JSON → pull to local
-scripts/export-acf-json.sh --schema-repo .
+# 1) Pull latest schema from WordPress
+scripts/pull.sh --schema-repo .
 
-# Edit JSON files locally in wp-content/acf-json/
+# 2) Edit local JSON files in wp-content/acf-json/
 
-# Push JSON back to server
-scripts/deploy-main.sh --schema-repo .
+# 3) Push schema back (dry-run first, then apply)
+scripts/push.sh --schema-repo . --dry-run
+scripts/push.sh --schema-repo .
 
-# Import JSON into WP database (admin UI reflects changes)
-scripts/import-acf-json.sh
+# If intentionally adding/removing/changing field keys:
+scripts/push.sh --schema-repo . --allow-field-key-changes
 ```
 
-## First-Time Setup
+## Configuration
+Copy and edit:
 ```bash
-scripts/setup.sh \
-  --host 52.24.217.50 \
-  --user roostergrintemp \
-  --key ~/.ssh/acf_schema_deploy \
-  --domain api-gordon-acf-demo.roostergrintemplates.com
+cp config/target-main.sh.example config/target-main.sh
 ```
+
+Required config values in `config/target-main.sh`:
+- `TARGET_BASE_URL`
+- `TARGET_API_USER`
+- `TARGET_API_APP_PASSWORD`
+- `TARGET_API_HMAC_SECRET` (or env `ACF_SCHEMA_API_HMAC_SECRET`)
 
 ## Scripts
 | Script | Purpose |
 |--------|---------|
-| `scripts/setup.sh` | Auto-discover server config (PHP, WP root, ACF path), write `config/target-main.sh` |
-| `scripts/export-acf-json.sh` | Export ACF field groups from WP database to JSON on server, then pull to local |
-| `scripts/pull.sh` | Fetch JSON files from server to local `wp-content/acf-json/` |
-| `scripts/deploy-main.sh` | Validate + rsync local JSON to server |
-| `scripts/import-acf-json.sh` | Sync JSON files on server into WP database (makes admin UI reflect changes) |
-| `scripts/wp-remote.sh` | Run any WP-CLI command on the remote server |
-| `scripts/wpcli-sync.sh` | Run configured post-deploy WP-CLI command |
-| `scripts/validate.sh` | Scope check, JSON parse, duplicate fields, key stability |
-| `scripts/check_scope.sh` | Fail if changes are outside `wp-content/acf-json/**` |
-| `scripts/check_duplicates.sh` | Fail on duplicate field names in sibling arrays |
-| `scripts/check_field_keys.sh` | Fail on key changes unless explicitly allowed |
-| `config/target-main.sh` | SSH, WP root, ACF path, PHP path config |
+| `scripts/pull.sh` | Pull schema from `/wp-json/acf-schema/v1/pull` and write local `group_*.json` files |
+| `scripts/push.sh` | Push local schema to `/wp-json/acf-schema/v1/push` (signed) |
+| `scripts/deploy-main.sh` | Backward-compatible alias to `scripts/push.sh` |
+
+Legacy SSH/WP-CLI scripts remain in the repo for reference but are not part of this v1 API flow.
 
 ## Workflow Detail
-1. Apply schema edits in `wp-content/acf-json/**`.
-2. Run validation: `scripts/validate.sh --schema-repo .`
-3. Present a concise diff summary of changed JSON files.
-4. Deploy: `scripts/deploy-main.sh --schema-repo .`
-5. Import into DB: `scripts/import-acf-json.sh`
-
-All scripts support `--dry-run`. All scripts support `--help`.
-
-## Deployment Model
-- One target only: `main`.
-- Trigger: push to `main` branch in the schema repo.
-- CI order:
-1. Checkout schema repo
-2. `scripts/validate.sh --schema-repo <repo>`
-3. `scripts/deploy-main.sh --schema-repo <repo>`
-4. `scripts/wpcli-sync.sh`
+1. Pull latest schema: `scripts/pull.sh --schema-repo .`
+2. Apply local edits under `wp-content/acf-json/**`.
+3. Review diff in Git.
+4. Run push dry-run: `scripts/push.sh --schema-repo . --dry-run`
+5. Apply push: `scripts/push.sh --schema-repo .`
 
 ## References
-- `references/bootstrap.md`: one-time setup and bootstrap from Plesk.
-- `references/wpcli.md`: WP-CLI requirement and server setup guidance.
+- `references/bootstrap.md`: plugin/API bootstrap and config.
+- `references/wpcli.md`: WP-CLI is optional and only for server diagnostics/plugin ops.
 - `references/github-actions-main.yml`: push-to-main CI workflow template.
 
 ## Expected Response Pattern
 1. State changed files under `wp-content/acf-json/**`.
-2. State validation result.
+2. State pull/push result (dry-run vs apply).
 3. Provide concise diff summary.
-4. If requested, provide exact deploy command invocation and expected CI behavior.
+4. If requested, provide exact command invocations.

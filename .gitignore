@@ -5,3 +5,6 @@ config/target-main.sh
 .DS_Store
 *.swp
 *~
+
+# local api credentials
+.env
