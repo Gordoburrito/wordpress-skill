@@ -9,6 +9,5 @@ Update these paths for your environment. All skill files reference these locatio
 | `CONTENT_API_REPO` | Local clone of the WP ACF content API repo | `./wp-acf-content-api` |
 
 For shell scripts, paths are configured in:
-- `/Users/gordonlewis/wordpress-skill/.env` — WordPress schema API base URL, API credentials, HMAC secret (preferred)
-- `$SCHEMA_REPO/config/target-main.sh` — optional endpoint/config overrides
-- `$CONTENT_API_REPO/config/target-api.sh` — WordPress REST API base URL, credentials (gitignored)
+- `/Users/gordonlewis/wordpress-skill/.env` — shared API base URL, credentials, and HMAC secret for all skills
+- `/Users/gordonlewis/wordpress-skill/.env.example` — template for required/optional variables

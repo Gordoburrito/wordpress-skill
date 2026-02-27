@@ -1,18 +1,18 @@
 # Quickstart
 
 ## 1) Configure API target
-Copy the example config:
+Copy the workspace env template:
 ```bash
-cp config/target-api.sh.example config/target-api.sh
+cp /Users/gordonlewis/wordpress-skill/.env.example /Users/gordonlewis/wordpress-skill/.env
 ```
 
-Edit `config/target-api.sh`:
-- `WP_API_BASE_URL` — your WordPress site URL
-- `WP_API_USERNAME` — WordPress username
+Edit `/Users/gordonlewis/wordpress-skill/.env`:
+- `TARGET_BASE_URL` — your WordPress site URL
+- `WP_API_USER` — WordPress username
 - `WP_API_APP_PASSWORD` — WordPress Application Password (not regular password)
 - `ALLOWED_RESOURCE_TYPES` — comma-separated endpoint types (default: `pages,posts`)
 
-The config file is gitignored. Alternatively, set `WP_API_APP_PASSWORD` as an environment variable:
+The `.env` file is gitignored. Alternatively, set `WP_API_APP_PASSWORD` as an environment variable:
 ```bash
 export WP_API_APP_PASSWORD='xxxx xxxx xxxx xxxx xxxx xxxx'
 ```

@@ -9,11 +9,11 @@ Never use pulled values to:
 - bypass field-key allowlist checks
 
 ## Mandatory controls
-- Endpoint allowlist in `config/target-api.sh` (`ALLOWED_RESOURCE_TYPES`).
+- Endpoint allowlist in workspace `.env` (`ALLOWED_RESOURCE_TYPES`).
 - Field-key allowlist generated from trusted local schema via `scripts/build-allowlist.sh`.
 - Payload schema restriction: only top-level `acf` object is accepted.
 - Dry-run before real updates.
-- Secret handling through environment variable `WP_API_APP_PASSWORD` only.
+- Secret handling through `/Users/gordonlewis/wordpress-skill/.env` (or exported env vars only).
 
 ## Operational rules
 - Keep schema repo as source of truth for allowed field keys.

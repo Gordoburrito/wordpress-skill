@@ -1,4 +1,4 @@
-# Environment-specific config with credentials / server details
+# Legacy local config file (unused, keep ignored to avoid leaking credentials)
 config/target-main.sh
 
 # OS / editor

@@ -3,10 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-TARGET_CONFIG="${SKILL_ROOT}/config/target-main.sh"
 WORKSPACE_ROOT="$(cd -- "${SKILL_ROOT}/.." && pwd)"
-TARGET_ENV_FILE="${WORKSPACE_ROOT}/.env"
-LEGACY_ENV_FILE="${SKILL_ROOT}/.env"
+WORKSPACE_ENV_FILE="${WORKSPACE_ROOT}/.env"
 
 fail() {
   echo "ERROR: $*" >&2
@@ -33,25 +31,18 @@ json_pretty_write() {
 }
 
 load_target_config() {
-  if [[ -f "${TARGET_ENV_FILE}" ]]; then
+  if [[ -f "${WORKSPACE_ENV_FILE}" ]]; then
     # shellcheck disable=SC1090
-    source "${TARGET_ENV_FILE}"
-  elif [[ -f "${LEGACY_ENV_FILE}" ]]; then
-    # Backward-compatible fallback for older setup.
-    # shellcheck disable=SC1090
-    source "${LEGACY_ENV_FILE}"
+    source "${WORKSPACE_ENV_FILE}"
   fi
 
-  [[ -f "${TARGET_CONFIG}" ]] || fail "Missing target config: ${TARGET_CONFIG}"
-  # shellcheck disable=SC1090
-  source "${TARGET_CONFIG}"
+  TARGET_BASE_URL="${TARGET_BASE_URL:-${WP_API_BASE_URL:-}}"
+  : "${TARGET_BASE_URL:?TARGET_BASE_URL (or WP_API_BASE_URL) must be set in /Users/gordonlewis/wordpress-skill/.env or environment}"
 
-  : "${TARGET_BASE_URL:?TARGET_BASE_URL must be set in config/target-main.sh}"
-
-  TARGET_API_USER="${TARGET_API_USER:-${WP_API_USER:-}}"
+  TARGET_API_USER="${TARGET_API_USER:-${WP_API_USER:-${WP_API_USERNAME:-}}}"
   TARGET_API_APP_PASSWORD="${TARGET_API_APP_PASSWORD:-${WP_API_APP_PASSWORD:-}}"
-  : "${TARGET_API_USER:?TARGET_API_USER (or WP_API_USER env) must be set in config/target-main.sh}"
-  : "${TARGET_API_APP_PASSWORD:?TARGET_API_APP_PASSWORD (or WP_API_APP_PASSWORD env) must be set in config/target-main.sh}"
+  : "${TARGET_API_USER:?TARGET_API_USER (or WP_API_USER/WP_API_USERNAME) must be set in /Users/gordonlewis/wordpress-skill/.env or environment}"
+  : "${TARGET_API_APP_PASSWORD:?TARGET_API_APP_PASSWORD (or WP_API_APP_PASSWORD) must be set in /Users/gordonlewis/wordpress-skill/.env or environment}"
 
   TARGET_BASE_URL="${TARGET_BASE_URL%/}"
   TARGET_API_PULL_PATH="${TARGET_API_PULL_PATH:-/wp-json/acf-schema/v1/pull}"

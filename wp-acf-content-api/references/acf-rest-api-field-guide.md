@@ -297,7 +297,7 @@ To create an Application Password:
 3. Enter a name, click "Add New Application Password"
 4. Copy the generated password (format: `xxxx xxxx xxxx xxxx xxxx xxxx`)
 
-Store it in `config/target-api.sh` as `WP_API_APP_PASSWORD` (gitignored)
+Store it in `/Users/gordonlewis/wordpress-skill/.env` as `WP_API_APP_PASSWORD` (gitignored)
 or export it as an environment variable.
 
 ## The `acf_format` Query Parameter

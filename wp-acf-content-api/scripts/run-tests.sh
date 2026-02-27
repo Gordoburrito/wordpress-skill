@@ -41,15 +41,15 @@ done
 [[ -n "${SCHEMA_REPO}" ]] || { echo "ERROR: --schema-repo is required" >&2; exit 1; }
 [[ -n "${PAGE_ID}" ]]     || { echo "ERROR: --id is required" >&2; exit 1; }
 
-# Load password from config if not already in environment
+# Load workspace .env if password is not already in environment
 if [[ -z "${WP_API_APP_PASSWORD:-}" ]]; then
-  TARGET_CONFIG="${SKILL_ROOT}/config/target-api.sh"
-  if [[ -f "${TARGET_CONFIG}" ]]; then
+  WORKSPACE_ENV_FILE="${SKILL_ROOT}/../.env"
+  if [[ -f "${WORKSPACE_ENV_FILE}" ]]; then
     # shellcheck disable=SC1090
-    source "${TARGET_CONFIG}"
+    source "${WORKSPACE_ENV_FILE}"
   fi
 fi
-[[ -n "${WP_API_APP_PASSWORD:-}" ]] || { echo "ERROR: WP_API_APP_PASSWORD must be set in config/target-api.sh or environment" >&2; exit 1; }
+[[ -n "${WP_API_APP_PASSWORD:-}" ]] || { echo "ERROR: WP_API_APP_PASSWORD must be set in /Users/gordonlewis/wordpress-skill/.env or environment" >&2; exit 1; }
 
 # ─── Counters ───
 PASS=0

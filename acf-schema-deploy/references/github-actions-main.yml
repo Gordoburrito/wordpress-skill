@@ -12,21 +12,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Write API target config
+      - name: Write workspace .env
         shell: bash
         run: |
-          cat > config/target-main.sh <<'EOF'
-          #!/usr/bin/env bash
+          cat > .env <<'EOF'
           TARGET_BASE_URL="${{ secrets.ACF_SCHEMA_BASE_URL }}"
-          TARGET_API_USER="${{ secrets.ACF_SCHEMA_API_USER }}"
-          TARGET_API_APP_PASSWORD="${{ secrets.ACF_SCHEMA_API_APP_PASSWORD }}"
-          TARGET_API_HMAC_SECRET="${{ secrets.ACF_SCHEMA_API_HMAC_SECRET }}"
+          WP_API_USER="${{ secrets.ACF_SCHEMA_API_USER }}"
+          WP_API_APP_PASSWORD="${{ secrets.ACF_SCHEMA_API_APP_PASSWORD }}"
+          ACF_SCHEMA_API_HMAC_SECRET="${{ secrets.ACF_SCHEMA_API_HMAC_SECRET }}"
           TARGET_API_PULL_PATH="/wp-json/acf-schema/v1/pull"
           TARGET_API_PUSH_PATH="/wp-json/acf-schema/v1/push"
           TARGET_API_PUSH_ROUTE="/acf-schema/v1/push"
           TARGET_CURL_TIMEOUT="30"
           EOF
-          chmod 600 config/target-main.sh
+          chmod 600 .env
 
       - name: Push dry-run
         run: ./scripts/push.sh --schema-repo . --dry-run

@@ -50,10 +50,10 @@ Set root-level env in:
 ```
 
 Required values:
-- `TARGET_BASE_URL` (or in `config/target-main.sh`)
-- `WP_API_USER` or `TARGET_API_USER`
-- `WP_API_APP_PASSWORD` or `TARGET_API_APP_PASSWORD`
-- `ACF_SCHEMA_API_HMAC_SECRET` or `TARGET_API_HMAC_SECRET`
+- `TARGET_BASE_URL` (or `WP_API_BASE_URL`)
+- `WP_API_USER` (or `WP_API_USERNAME` / `TARGET_API_USER`)
+- `WP_API_APP_PASSWORD` (or `TARGET_API_APP_PASSWORD`)
+- `ACF_SCHEMA_API_HMAC_SECRET` (or `TARGET_API_HMAC_SECRET`)
 
 ## Scripts
 | Script | Purpose |

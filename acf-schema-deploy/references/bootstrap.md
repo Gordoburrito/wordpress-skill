@@ -34,7 +34,10 @@ ACF_SCHEMA_API_HMAC_SECRET="your-hmac-secret"
 EOF
 ```
 
-Optional: override endpoints in `acf-schema-deploy/config/target-main.sh` if needed.
+Optional: set endpoint overrides directly in `/Users/gordonlewis/wordpress-skill/.env`:
+- `TARGET_API_PULL_PATH`
+- `TARGET_API_PUSH_PATH`
+- `TARGET_API_PUSH_ROUTE`
 
 ## 5) Pull baseline schema
 

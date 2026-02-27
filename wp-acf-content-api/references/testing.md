@@ -6,7 +6,7 @@
 
 ### Prerequisites
 - `jq` installed
-- `config/target-api.sh` configured (including `WP_API_APP_PASSWORD`)
+- `/Users/gordonlewis/wordpress-skill/.env` configured (including `WP_API_APP_PASSWORD`)
   OR `WP_API_APP_PASSWORD` exported in environment
 - Access to the ACF schema repo (local path)
 
@@ -46,7 +46,7 @@ scripts/run-tests.sh --schema-repo /ABS/PATH/TO/acf-schema-deploy --id 8 --live
 - **Uses field names** (from `allowed-field-names.txt`), matching what the REST API expects.
 - **Auth test uses push** (test 9), because public pages can be read without auth via
   the view context fallback — the real safety concern is unauthorized writes.
-- **Password from config.** The runner loads `WP_API_APP_PASSWORD` from `config/target-api.sh`
+- **Password from workspace env.** The runner loads `WP_API_APP_PASSWORD` from `/Users/gordonlewis/wordpress-skill/.env`
   if not already set in environment.
 
 ## Offline testing (no credentials)
@@ -90,7 +90,7 @@ Tested and confirmed working:
 | `{"acf":{}}` (empty) | push --dry-run | Rejected: "no ACF keys to update" |
 | `{"acf":{...},"title":"x"}` | push --dry-run | Rejected: "only an 'acf' object" |
 | Name not in allowlist | push --dry-run | Rejected: "outside allowlist" |
-| Missing `WP_API_APP_PASSWORD` | pull / push | Rejected: "required in config or environment" |
+| Missing `WP_API_APP_PASSWORD` | pull / push | Rejected: "required in .env or environment" |
 | Wrong password on push | push | Rejected: curl 401 |
 | Wrong password on pull | pull | Falls back to public view context (expected) |
 

@@ -54,7 +54,7 @@ done
 require_command curl
 require_command jq
 
-echo "Loading API target config..."
+echo "Loading workspace environment..."
 load_target_config
 
 local_acf_dir="${SCHEMA_REPO}/wp-content/acf-json"

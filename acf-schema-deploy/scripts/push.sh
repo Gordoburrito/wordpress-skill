@@ -64,7 +64,7 @@ require_command curl
 require_command jq
 require_command openssl
 
-echo "Loading API target config..."
+echo "Loading workspace environment..."
 load_target_config
 
 tmp_dir="$(mktemp -d)"

@@ -6,6 +6,7 @@ Claude Code skills for managing Advanced Custom Fields on a headless WordPress s
 
 ```
 .
+├── .env.example               # Shared env template for all skills
 ├── CLAUDE.md                  # Claude Code instructions (auto-loaded)
 ├── skills/                    # Skill definitions
 │   ├── workflow.md            # End-to-end workflow (design → live page)
@@ -19,12 +20,10 @@ Claude Code skills for managing Advanced Custom Fields on a headless WordPress s
 ├── acf-schema-deploy/         # Deployment scripts & server config
 │   ├── SKILL.md               # Skill entrypoint
 │   ├── scripts/               # pull, push (API flow)
-│   ├── config/                # target-main.sh (API config)
 │   └── wp-content/acf-json/   # ACF field group JSON files (11 groups)
 └── wp-acf-content-api/        # Skill package: content API
     ├── SKILL.md               # Skill entrypoint
     ├── scripts/               # build-allowlist, pull-content, push-content
-    ├── config/                # target-api.sh (REST API credentials, gitignored)
     └── runtime/               # Generated allowlists & pulled content
 ```
 
@@ -61,13 +60,15 @@ Restart Codex to pick up new skills.
 
 ### 1. Configure credentials
 
-**REST API** (for reading/writing content):
+All skill scripts load credentials from the workspace root `.env`.
+
 ```bash
-cp wp-acf-content-api/config/target-api.sh.example wp-acf-content-api/config/target-api.sh
-# Edit with your WordPress URL, username, and Application Password
+cp .env.example .env
+# Edit with your WordPress URL, username, Application Password, and HMAC secret
 ```
 
-**Schema API** (for pulling/pushing schema):
+Minimum required values:
+
 ```bash
 cat > .env <<'EOF'
 TARGET_BASE_URL="https://api-gordon-acf-demo.roostergrintemplates.com"

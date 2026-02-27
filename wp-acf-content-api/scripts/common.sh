@@ -3,7 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-TARGET_CONFIG="${SKILL_ROOT}/config/target-api.sh"
+WORKSPACE_ROOT="$(cd -- "${SKILL_ROOT}/.." && pwd)"
+WORKSPACE_ENV_FILE="${WORKSPACE_ROOT}/.env"
 
 fail() {
   echo "ERROR: $*" >&2
@@ -34,12 +35,15 @@ is_allowed_resource_type() {
 }
 
 load_api_config() {
-  [[ -f "${TARGET_CONFIG}" ]] || fail "Missing config file: ${TARGET_CONFIG}"
-  # shellcheck disable=SC1090
-  source "${TARGET_CONFIG}"
+  if [[ -f "${WORKSPACE_ENV_FILE}" ]]; then
+    # shellcheck disable=SC1090
+    source "${WORKSPACE_ENV_FILE}"
+  fi
 
-  : "${WP_API_BASE_URL:?WP_API_BASE_URL must be set in config/target-api.sh}"
-  : "${WP_API_USERNAME:?WP_API_USERNAME must be set in config/target-api.sh}"
+  WP_API_BASE_URL="${WP_API_BASE_URL:-${TARGET_BASE_URL:-}}"
+  WP_API_USERNAME="${WP_API_USERNAME:-${WP_API_USER:-${TARGET_API_USER:-}}}"
+  : "${WP_API_BASE_URL:?WP_API_BASE_URL (or TARGET_BASE_URL) must be set in /Users/gordonlewis/wordpress-skill/.env or environment}"
+  : "${WP_API_USERNAME:?WP_API_USERNAME (or WP_API_USER) must be set in /Users/gordonlewis/wordpress-skill/.env or environment}"
 
   WP_API_TIMEOUT_SECONDS="${WP_API_TIMEOUT_SECONDS:-30}"
   DEFAULT_RESOURCE_TYPE="${DEFAULT_RESOURCE_TYPE:-pages}"
@@ -50,9 +54,7 @@ load_api_config() {
 }
 
 require_api_auth() {
-  # WP_API_APP_PASSWORD can come from config/target-api.sh or environment.
-  # Environment variable overrides the config value if both are set.
-  [[ -n "${WP_API_APP_PASSWORD:-}" ]] || fail "WP_API_APP_PASSWORD is required (set in config/target-api.sh or environment)."
+  [[ -n "${WP_API_APP_PASSWORD:-}" ]] || fail "WP_API_APP_PASSWORD is required (set in /Users/gordonlewis/wordpress-skill/.env or environment)."
   CURL_AUTH_ARGS=(--user "${WP_API_USERNAME}:${WP_API_APP_PASSWORD}")
 }
 

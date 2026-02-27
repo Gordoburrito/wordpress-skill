@@ -1,4 +1,4 @@
-# Config contains credentials — keep a template but ignore the live file
+# Legacy local config file (unused, keep ignored to avoid leaking credentials)
 config/target-api.sh
 
 # Runtime artifacts (generated, not source)
