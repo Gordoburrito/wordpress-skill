@@ -13,12 +13,16 @@ Claude Code skills for managing Advanced Custom Fields on a headless WordPress s
 │   ├── acf-schema-deploy.md   # Pull/push schema JSON via WordPress plugin API
 │   ├── wp-acf-content-api.md  # Read/write field values via REST API
 │   └── config.md              # Path configuration reference
-├── acf-schema-edit/           # Schema editing resources & references
+├── acf-schema-edit/           # Skill package: schema editing
+│   ├── SKILL.md               # Skill entrypoint
+│   └── references/            # Schema editing references
 ├── acf-schema-deploy/         # Deployment scripts & server config
+│   ├── SKILL.md               # Skill entrypoint
 │   ├── scripts/               # pull, push (API flow)
 │   ├── config/                # target-main.sh (API config)
 │   └── wp-content/acf-json/   # ACF field group JSON files (11 groups)
-└── wp-acf-content-api/        # Content API scripts & config
+└── wp-acf-content-api/        # Skill package: content API
+    ├── SKILL.md               # Skill entrypoint
     ├── scripts/               # build-allowlist, pull-content, push-content
     ├── config/                # target-api.sh (REST API credentials, gitignored)
     └── runtime/               # Generated allowlists & pulled content
@@ -34,7 +38,7 @@ using the built-in `skill-installer` script.
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo Gordoburrito/wordpress-skill \
-  --ref master \
+  --ref main \
   --path acf-schema-edit acf-schema-deploy wp-acf-content-api \
   --method git
 ```
@@ -46,7 +50,7 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 # acf-schema-edit | acf-schema-deploy | wp-acf-content-api
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo Gordoburrito/wordpress-skill \
-  --ref master \
+  --ref main \
   --path <skill-path> \
   --method git
 ```

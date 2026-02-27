@@ -6,6 +6,7 @@ This skill manages ACF schema JSON through the WordPress plugin API:
 - Push to `POST /wp-json/acf-schema/v1/push` (signed)
 
 Local schema remains canonical in `wp-content/acf-json/group_*.json`.
+Skill entrypoint for Codex is this directory's `SKILL.md`.
 
 ## Commands
 
