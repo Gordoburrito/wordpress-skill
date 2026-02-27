@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: push.sh --schema-repo <abs-path> [--dry-run] [--allow-field-key-changes] [--expected-hash <hash>]
+Usage: push.sh --schema-repo <abs-path> [--dry-run] [--allow-field-key-changes] [--delete-missing] [--expected-hash <hash>]
 
 Push local wp-content/acf-json/group_*.json to the WordPress plugin API.
 Validation is enforced server-side by the plugin.
@@ -22,6 +22,7 @@ source "${SCRIPT_DIR}/api-common.sh"
 SCHEMA_REPO=""
 DRY_RUN=0
 ALLOW_FIELD_KEY_CHANGES=0
+DELETE_MISSING=0
 EXPECTED_HASH=""
 
 while [[ $# -gt 0 ]]; do
@@ -37,6 +38,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --allow-field-key-changes)
       ALLOW_FIELD_KEY_CHANGES=1
+      shift
+      ;;
+    --delete-missing)
+      DELETE_MISSING=1
       shift
       ;;
     --expected-hash)
@@ -111,15 +116,23 @@ else
   allow_keys_json=false
 fi
 
+if [[ "${DELETE_MISSING}" -eq 1 ]]; then
+  delete_missing_json=true
+else
+  delete_missing_json=false
+fi
+
 jq -n \
   --arg expected_hash "${EXPECTED_HASH}" \
   --argjson dry_run "${dry_run_json}" \
   --argjson allow_field_key_changes "${allow_keys_json}" \
+  --argjson delete_missing_groups "${delete_missing_json}" \
   --slurpfile groups "${field_groups_file}" \
   '{
     expected_hash: $expected_hash,
     dry_run: $dry_run,
     allow_field_key_changes: $allow_field_key_changes,
+    delete_missing_groups: $delete_missing_groups,
     field_groups: $groups[0]
   }' > "${payload_file}"
 
@@ -137,7 +150,8 @@ plan_unchanged="$(jq -r '.plan.unchanged_count // 0' "${response_raw}")"
 
 if [[ "${DRY_RUN}" -eq 1 ]]; then
   echo "Push dry-run completed."
-  echo "Plan: create=${plan_create} update=${plan_update} unchanged=${plan_unchanged}"
+  plan_removed="$(jq -r '.plan.removed_count // 0' "${response_raw}")"
+  echo "Plan: create=${plan_create} update=${plan_update} unchanged=${plan_unchanged} removed=${plan_removed}"
   echo "response=${response_pretty}"
   exit 0
 fi
@@ -147,6 +161,13 @@ jq -e '.applied == true and .schema_hash_after' "${response_raw}" >/dev/null \
 
 schema_hash_after="$(jq -r '.schema_hash_after' "${response_raw}")"
 echo "Push applied."
-echo "Plan: create=${plan_create} update=${plan_update} unchanged=${plan_unchanged}"
+plan_removed="$(jq -r '.plan.removed_count // 0' "${response_raw}")"
+echo "Plan: create=${plan_create} update=${plan_update} unchanged=${plan_unchanged} removed=${plan_removed}"
+if [[ "${DELETE_MISSING}" -eq 1 ]]; then
+  delete_attempted="$(jq -r '.delete_report.attempted // 0' "${response_raw}")"
+  delete_deleted="$(jq -r '.delete_report.deleted // 0' "${response_raw}")"
+  delete_missing_file="$(jq -r '.delete_report.missing_file // 0' "${response_raw}")"
+  echo "Delete report: attempted=${delete_attempted} deleted=${delete_deleted} missing_file=${delete_missing_file}"
+fi
 echo "schema_hash_after=${schema_hash_after}"
 echo "response=${response_pretty}"
