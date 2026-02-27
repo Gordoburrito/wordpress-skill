@@ -1,0 +1,10 @@
+# Environment-specific config with credentials / server details
+config/target-main.sh
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# generated runtime API responses
+runtime/
