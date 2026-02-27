@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: pull.sh --schema-repo <abs-path> [--dry-run] [--prune]
+Usage: pull.sh --schema-repo <abs-path> [--dry-run] [--prune] [--active-only]
 
 Pull ACF schema from the WordPress plugin API into local wp-content/acf-json/.
 This script writes one pretty JSON file per field group (group_*.json).
@@ -22,6 +22,7 @@ source "${SCRIPT_DIR}/api-common.sh"
 SCHEMA_REPO=""
 DRY_RUN=0
 PRUNE=0
+ACTIVE_ONLY=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -36,6 +37,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --prune)
       PRUNE=1
+      shift
+      ;;
+    --active-only)
+      ACTIVE_ONLY=1
       shift
       ;;
     -h|--help)
@@ -78,15 +83,24 @@ jq -e '.schema_hash and (.field_groups | type == "array")' "${response_raw}" >/d
 schema_hash="$(jq -r '.schema_hash' "${response_raw}")"
 group_count="$(jq -r '.group_count // (.field_groups | length)' "${response_raw}")"
 
+if [[ "${ACTIVE_ONLY}" -eq 1 ]]; then
+  group_selector='.field_groups[] | select((.active // true) == true)'
+else
+  group_selector='.field_groups[]'
+fi
+
 group_keys=()
 while IFS= read -r group_key; do
   [[ -n "${group_key}" ]] && group_keys+=("${group_key}")
-done < <(jq -r '.field_groups[] | .key // empty' "${response_raw}" | sort)
+done < <(jq -r "${group_selector} | .key // empty" "${response_raw}" | sort)
 [[ "${#group_keys[@]}" -gt 0 ]] || fail "No field groups returned by pull endpoint."
 
 if [[ "${DRY_RUN}" -eq 1 ]]; then
   echo "Dry-run mode: no local files were modified."
-  echo "schema_hash=${schema_hash} group_count=${group_count}"
+  echo "schema_hash=${schema_hash} group_count=${group_count} selected_groups=${#group_keys[@]}"
+  if [[ "${ACTIVE_ONLY}" -eq 1 ]]; then
+    echo "mode=active-only"
+  fi
   echo "response=${response_pretty}"
   exit 0
 fi
@@ -94,7 +108,7 @@ fi
 for group_key in "${group_keys[@]}"; do
   [[ -n "${group_key}" ]] || continue
   target_file="${local_acf_dir}/${group_key}.json"
-  jq --arg group_key "${group_key}" '.field_groups[] | select(.key == $group_key)' "${response_raw}" > "${target_file}"
+  jq --arg group_key "${group_key}" "${group_selector} | select(.key == \$group_key)" "${response_raw}" > "${target_file}"
 done
 
 if [[ "${PRUNE}" -eq 1 ]]; then
@@ -105,12 +119,15 @@ if [[ "${PRUNE}" -eq 1 ]]; then
   for local_file in "${local_files[@]}"; do
     local_basename="$(basename "${local_file}")"
     local_group_key="${local_basename%.json}"
-    if ! jq -e --arg group_key "${local_group_key}" '.field_groups[] | select(.key == $group_key)' "${response_raw}" >/dev/null; then
+    if ! jq -e --arg group_key "${local_group_key}" "${group_selector} | select(.key == \$group_key)" "${response_raw}" >/dev/null; then
       rm -f "${local_file}"
     fi
   done
 fi
 
 file_count="$(find "${local_acf_dir}" -maxdepth 1 -type f -name 'group_*.json' | wc -l | tr -d ' ')"
-echo "Pull completed. schema_hash=${schema_hash} group_count=${group_count} local_files=${file_count}"
+echo "Pull completed. schema_hash=${schema_hash} group_count=${group_count} selected_groups=${#group_keys[@]} local_files=${file_count}"
+if [[ "${ACTIVE_ONLY}" -eq 1 ]]; then
+  echo "mode=active-only"
+fi
 echo "response=${response_pretty}"
