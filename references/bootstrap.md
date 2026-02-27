@@ -26,15 +26,15 @@ define('ACF_SCHEMA_API_HMAC_SECRET', 'replace-with-64+-char-random-secret');
 ## 4) Configure local target
 
 ```bash
-cd /Users/gordonlewis/wordpress-skill/acf-schema-deploy
-cp config/target-main.sh.example config/target-main.sh
+cat > /Users/gordonlewis/wordpress-skill/.env <<'EOF'
+TARGET_BASE_URL="https://api-gordon-acf-demo.roostergrintemplates.com"
+WP_API_USER="your-user"
+WP_API_APP_PASSWORD="your-app-password"
+ACF_SCHEMA_API_HMAC_SECRET="your-hmac-secret"
+EOF
 ```
 
-Set:
-- `TARGET_BASE_URL`
-- `TARGET_API_USER`
-- `TARGET_API_APP_PASSWORD`
-- `TARGET_API_HMAC_SECRET`
+Optional: override endpoints in `acf-schema-deploy/config/target-main.sh` if needed.
 
 ## 5) Pull baseline schema
 

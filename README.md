@@ -29,6 +29,17 @@ scripts/push.sh --schema-repo . --allow-field-key-changes
 
 ## Configure Target
 
+Set root-level env (preferred):
+```bash
+cat > /Users/gordonlewis/wordpress-skill/.env <<'EOF'
+TARGET_BASE_URL="https://api-gordon-acf-demo.roostergrintemplates.com"
+WP_API_USER="your-user"
+WP_API_APP_PASSWORD="your-app-password"
+ACF_SCHEMA_API_HMAC_SECRET="your-hmac-secret"
+EOF
+```
+
+Optional static config file:
 ```bash
 cp config/target-main.sh.example config/target-main.sh
 ```

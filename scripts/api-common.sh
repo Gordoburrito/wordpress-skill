@@ -4,7 +4,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 TARGET_CONFIG="${SKILL_ROOT}/config/target-main.sh"
-TARGET_ENV_FILE="${SKILL_ROOT}/.env"
+WORKSPACE_ROOT="$(cd -- "${SKILL_ROOT}/.." && pwd)"
+TARGET_ENV_FILE="${WORKSPACE_ROOT}/.env"
+LEGACY_ENV_FILE="${SKILL_ROOT}/.env"
 
 fail() {
   echo "ERROR: $*" >&2
@@ -34,6 +36,10 @@ load_target_config() {
   if [[ -f "${TARGET_ENV_FILE}" ]]; then
     # shellcheck disable=SC1090
     source "${TARGET_ENV_FILE}"
+  elif [[ -f "${LEGACY_ENV_FILE}" ]]; then
+    # Backward-compatible fallback for older setup.
+    # shellcheck disable=SC1090
+    source "${LEGACY_ENV_FILE}"
   fi
 
   [[ -f "${TARGET_CONFIG}" ]] || fail "Missing target config: ${TARGET_CONFIG}"

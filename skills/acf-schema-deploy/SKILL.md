@@ -21,7 +21,7 @@ Validation, duplicate checks, and field-key stability checks are enforced server
 ## Hard Guardrails
 - Edit only `wp-content/acf-json/**` inside the schema repo.
 - Never edit frontend repositories.
-- Never read secrets (`.env`, `wp-config.php`, SSH private keys).
+- Never print or expose secrets (`.env`, `wp-config.php`, SSH private keys).
 - Never run arbitrary shell commands outside declared scripts.
 - Use only `pull.sh` and `push.sh` for schema transport.
 - Push uses signed requests (HMAC) and optimistic lock (`expected_hash`).
@@ -44,16 +44,16 @@ scripts/push.sh --schema-repo . --allow-field-key-changes
 ```
 
 ## Configuration
-Copy and edit:
+Set root-level env in:
 ```bash
-cp config/target-main.sh.example config/target-main.sh
+/Users/gordonlewis/wordpress-skill/.env
 ```
 
-Required config values in `config/target-main.sh`:
-- `TARGET_BASE_URL`
-- `TARGET_API_USER`
-- `TARGET_API_APP_PASSWORD`
-- `TARGET_API_HMAC_SECRET` (or env `ACF_SCHEMA_API_HMAC_SECRET`)
+Required values:
+- `TARGET_BASE_URL` (or in `config/target-main.sh`)
+- `WP_API_USER` or `TARGET_API_USER`
+- `WP_API_APP_PASSWORD` or `TARGET_API_APP_PASSWORD`
+- `ACF_SCHEMA_API_HMAC_SECRET` or `TARGET_API_HMAC_SECRET`
 
 ## Scripts
 | Script | Purpose |
@@ -61,8 +61,6 @@ Required config values in `config/target-main.sh`:
 | `scripts/pull.sh` | Pull schema from `/wp-json/acf-schema/v1/pull` and write local `group_*.json` files |
 | `scripts/push.sh` | Push local schema to `/wp-json/acf-schema/v1/push` (signed) |
 | `scripts/deploy-main.sh` | Backward-compatible alias to `scripts/push.sh` |
-
-Legacy SSH/WP-CLI scripts remain in the repo for reference but are not part of this v1 API flow.
 
 ## Workflow Detail
 1. Pull latest schema: `scripts/pull.sh --schema-repo .`
@@ -73,7 +71,6 @@ Legacy SSH/WP-CLI scripts remain in the repo for reference but are not part of t
 
 ## References
 - `references/bootstrap.md`: plugin/API bootstrap and config.
-- `references/wpcli.md`: WP-CLI is optional and only for server diagnostics/plugin ops.
 - `references/github-actions-main.yml`: push-to-main CI workflow template.
 
 ## Expected Response Pattern

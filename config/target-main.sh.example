@@ -3,6 +3,7 @@
 # Single main WordPress target via ACF Schema API plugin.
 # Copy this file to target-main.sh and fill in your values.
 # target-main.sh is gitignored — never commit credentials.
+# Preferred: put secrets in /Users/gordonlewis/wordpress-skill/.env.
 
 TARGET_BASE_URL="https://example.com"
 

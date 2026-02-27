@@ -6,5 +6,5 @@ config/target-main.sh
 *.swp
 *~
 
-# local api credentials
-.env
+# generated runtime API responses
+runtime/
