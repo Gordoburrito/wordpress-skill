@@ -1,0 +1,5 @@
+# Config contains credentials — keep a template but ignore the live file
+config/target-api.sh
+
+# Runtime artifacts (generated, not source)
+runtime/

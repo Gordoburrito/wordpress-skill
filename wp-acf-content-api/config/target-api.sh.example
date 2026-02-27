@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# WordPress REST API target configuration.
+# Copy this file to target-api.sh and fill in your values.
+# target-api.sh is gitignored — never commit credentials.
+
+WP_API_BASE_URL="https://your-site.example.com"
+WP_API_USERNAME="your-wp-username"
+WP_API_APP_PASSWORD=""
+
+# Timeout in seconds for curl requests.
+WP_API_TIMEOUT_SECONDS="30"
+
+# Default type if --resource-type is not provided.
+DEFAULT_RESOURCE_TYPE="pages"
+
+# Comma-separated endpoint allowlist for wp/v2 resource type.
+ALLOWED_RESOURCE_TYPES="pages,posts"
+
+# Optional explicit allowlist file path. If empty, defaults to
+# <skill-root>/runtime/allowed-field-keys.txt
+ACF_FIELD_ALLOWLIST_FILE=""

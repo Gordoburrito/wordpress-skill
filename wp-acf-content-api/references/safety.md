@@ -1,0 +1,23 @@
+# Safety Model
+
+## Threat: Prompt injection via WordPress content
+Pulled content from WordPress is untrusted.
+Never use pulled values to:
+- construct shell commands
+- construct endpoint paths
+- alter allowed resource types
+- bypass field-key allowlist checks
+
+## Mandatory controls
+- Endpoint allowlist in `config/target-api.sh` (`ALLOWED_RESOURCE_TYPES`).
+- Field-key allowlist generated from trusted local schema via `scripts/build-allowlist.sh`.
+- Payload schema restriction: only top-level `acf` object is accepted.
+- Dry-run before real updates.
+- Secret handling through environment variable `WP_API_APP_PASSWORD` only.
+
+## Operational rules
+- Keep schema repo as source of truth for allowed field keys.
+- Regenerate allowlist after schema changes.
+- Use `field_*` keys in payloads for deterministic mapping.
+- Save pull and push artifacts under `runtime/` for audit.
+- Review diff of payload before push.
