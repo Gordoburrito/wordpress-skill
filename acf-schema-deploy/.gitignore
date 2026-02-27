@@ -8,3 +8,6 @@ config/target-main.sh
 
 # generated runtime API responses
 runtime/
+
+# pulled schema JSON (local working copies from API pull)
+wp-content/acf-json/
