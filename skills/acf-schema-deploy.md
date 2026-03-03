@@ -10,7 +10,8 @@ Assumes the standalone `wp-acf-schema-api-plugin` repository is already installe
 ## Required Inputs
 - Schema change to deploy, or request to pull latest schema.
 - Confirmation this is for the single `main` backend.
-- For bootstrap setup: a one-time claim token or claim URL from the WordPress plugin.
+- Preferred setup: the copyable `.env` block from the WordPress plugin admin page.
+- Alternative bootstrap setup: a one-time claim token or claim URL from the WordPress plugin.
 
 ## Hard Guardrails
 - Edit only `wp-content/acf-json/**` inside the schema repo.
@@ -24,7 +25,9 @@ Assumes the standalone `wp-acf-schema-api-plugin` repository is already installe
 ```bash
 # Run from the target repo root.
 
-# Preferred: bootstrap once from a claim token exposed by the plugin
+# Preferred: open WordPress Settings > Codex Automation and copy the generated .env block
+
+# Alternative CLI bootstrap from a claim token exposed by the plugin
 scripts/bootstrap-repo.sh --claim-token <token>
 
 # Pull from WordPress

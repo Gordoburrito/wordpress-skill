@@ -12,12 +12,20 @@ The plugin is maintained in the separate `wp-acf-schema-api-plugin` repository.
   - `POST /wp-json/acf-schema/v1/pull`
   - `POST /wp-json/acf-schema/v1/push`
 
-## 2) Create Application Password user
+## 2) Preferred setup: copy the generated `.env` block
+
+- Open WordPress `Settings > Codex Automation`
+- Click `Generate Copyable .env Block`
+- Paste the output into `./.env` in the target repo root
+
+This is the simplest path because it avoids the extra bootstrap step entirely.
+
+## 3) Alternative: Create Application Password user
 
 - Use a WordPress user with capability required by plugin (`manage_options` by default).
 - Generate an Application Password for that user.
 
-## 3) Configure local target
+## 4) Configure local target manually
 
 ```bash
 cat > .env <<'EOF'
@@ -27,7 +35,7 @@ WP_API_APP_PASSWORD="your-app-password"
 EOF
 ```
 
-Preferred once the plugin exposes a claim token:
+Alternative CLI bootstrap once the plugin exposes a claim token:
 
 ```bash
 scripts/bootstrap-repo.sh --claim-token <token>
@@ -44,13 +52,13 @@ Optional: set endpoint overrides directly in `./.env`:
 - `TARGET_API_PUSH_PATH`
 - `TARGET_API_PUSH_ROUTE`
 
-## 4) Pull baseline schema
+## 5) Pull baseline schema
 
 ```bash
 scripts/pull.sh
 ```
 
-## 5) Smoke test push (dry-run)
+## 6) Smoke test push (dry-run)
 
 ```bash
 scripts/push.sh --dry-run

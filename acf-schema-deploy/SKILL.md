@@ -29,7 +29,10 @@ Validation, duplicate checks, and field-key stability checks are enforced server
 ```bash
 # Run from the target repo root.
 
-# 0) Preferred one-time setup: claim a plugin-managed automation secret
+# 0) Preferred one-time setup: in WordPress, open Settings > Codex Automation
+#    and copy the generated .env block into the target repo root.
+
+# Alternative CLI bootstrap:
 scripts/bootstrap-repo.sh --claim-token <token>
 
 # 1) Pull latest schema from WordPress
@@ -75,12 +78,13 @@ Optional for sites that explicitly require signed pushes:
 | `scripts/deploy-main.sh` | Backward-compatible alias to `scripts/push.sh` |
 
 ## Workflow Detail
-1. Bootstrap once per site: `scripts/bootstrap-repo.sh --claim-token <token>`
-2. Pull latest schema: `scripts/pull.sh`
-3. Apply local edits under `./wp-content/acf-json/**`.
-4. Review diff in Git.
-5. Run push dry-run: `scripts/push.sh --dry-run`
-6. Apply push: `scripts/push.sh`
+1. Prefer the WordPress admin setup: `Settings > Codex Automation > Generate Copyable .env Block`
+2. Alternative CLI bootstrap: `scripts/bootstrap-repo.sh --claim-token <token>`
+3. Pull latest schema: `scripts/pull.sh`
+4. Apply local edits under `./wp-content/acf-json/**`.
+5. Review diff in Git.
+6. Run push dry-run: `scripts/push.sh --dry-run`
+7. Apply push: `scripts/push.sh`
 
 ## References
 - `references/bootstrap.md`: plugin/API bootstrap and config.

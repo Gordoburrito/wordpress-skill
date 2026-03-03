@@ -79,7 +79,8 @@ Restart Codex to pick up new skills.
 
 ### 1. Configure credentials
 
-From the target repo root, either bootstrap automation from a claim token or create/update `.env` manually.
+From the target repo root, either paste the copyable `.env` block from WordPress
+`Settings > Codex Automation`, or create/update `.env` manually.
 
 ```bash
 cp .env.example .env
@@ -102,7 +103,13 @@ Optional for WordPress installs that explicitly re-enable signed schema pushes:
 ACF_SCHEMA_API_HMAC_SECRET="your-hmac-secret"
 ```
 
-Preferred bootstrap flow when the plugin exposes a claim token:
+Preferred setup flow from the plugin admin page:
+
+1. Open WordPress `Settings > Codex Automation`
+2. Click `Generate Copyable .env Block`
+3. Paste that block into the target repo root as `.env`
+
+Alternative CLI bootstrap flow when the plugin exposes a claim token:
 
 ```bash
 scripts/bootstrap-repo.sh --claim-token <token>
