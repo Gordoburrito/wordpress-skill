@@ -19,6 +19,10 @@
 - Confirm the resource exposes an `acf` object in the REST response.
 - Confirm the authenticated user has permission to view the resource.
 
+### Component options check is skipped
+- The checked resource may not have a `page_sections` array; that is expected for some types/templates.
+- If this page should include section component options, confirm the page has section rows and re-run preflight against that page ID.
+
 ### `globaldata` verification is skipped
 - Set `PREFLIGHT_GLOBALDATA_ID` in `.env` or pass `--globaldata-id <id>`.
 - Use the REST route token `globaldata`, not `globalData`.

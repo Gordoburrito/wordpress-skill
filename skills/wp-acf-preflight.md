@@ -45,8 +45,9 @@ wp-acf-preflight/scripts/preflight.sh --id 8
 6. Content allowlist generation works
 7. Content pull works
 8. Content push dry-run works
-9. Optional `globaldata` content pull and dry-run push work
-10. Optional live content write and rollback work
+9. `page_sections` component-option keys are detected when present
+10. Optional `globaldata` content pull and dry-run push work
+11. Optional live content write and rollback work
 
 ## Optional `globaldata` Target
 

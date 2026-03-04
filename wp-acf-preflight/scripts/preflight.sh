@@ -403,6 +403,40 @@ verify_rollback_value() {
   [[ "${current_value}" == "${rollback_value}" ]]
 }
 
+check_component_options_presence() {
+  local resource_type="$1"
+  local resource_id="$2"
+  local acf_file="$3"
+
+  [[ -f "${acf_file}" ]] || return 0
+
+  if ! jq -e '.page_sections | type == "array" and length > 0' "${acf_file}" >/dev/null 2>&1; then
+    skip "component options check (${resource_type}/${resource_id} has no page_sections)"
+    return 0
+  fi
+
+  local option_key_count
+  option_key_count="$(jq -r '
+    [.page_sections[]? | keys[]? | select(
+      . == "component_options" or
+      . == "hide_component" or
+      . == "component_padding" or
+      . == "component_margins" or
+      . == "padding_top" or
+      . == "padding_bottom" or
+      . == "margin_top" or
+      . == "margin_bottom" or
+      . == "hash"
+    )] | length
+  ' "${acf_file}")"
+
+  if [[ "${option_key_count}" -gt 0 ]]; then
+    pass "component options present in ${resource_type}/${resource_id} page_sections"
+  else
+    skip "component options check (${resource_type}/${resource_id} page_sections found but no known component option keys)"
+  fi
+}
+
 echo "=== WP ACF Preflight ==="
 echo "Workspace: ${WORKSPACE_ROOT}"
 echo "Schema dir: ${ACF_JSON_DIR}"
@@ -482,6 +516,8 @@ if ! run_logged_check "content pull" "${content_pull_log}" \
   exit 1
 fi
 
+check_component_options_presence "${RESOURCE_TYPE}" "${RESOURCE_ID}" "${CONTENT_API_RUNTIME_DIR}/pull-${RESOURCE_TYPE}-${RESOURCE_ID}-acf.json"
+
 WRITE_FIELD="$(select_write_field "${RESOURCE_TYPE}" "${RESOURCE_ID}" "${WRITE_FIELD}")"
 pass "selected verification write field '${WRITE_FIELD}'"
 
@@ -509,6 +545,8 @@ if [[ -n "${GLOBALDATA_RESOURCE_ID}" ]]; then
       print_summary
       exit 1
     fi
+
+    check_component_options_presence "${GLOBALDATA_RESOURCE_TYPE}" "${GLOBALDATA_RESOURCE_ID}" "${CONTENT_API_RUNTIME_DIR}/pull-${GLOBALDATA_RESOURCE_TYPE}-${GLOBALDATA_RESOURCE_ID}-acf.json"
 
     GLOBALDATA_WRITE_FIELD="$(select_write_field "${GLOBALDATA_RESOURCE_TYPE}" "${GLOBALDATA_RESOURCE_ID}" "${GLOBALDATA_WRITE_FIELD}")"
     pass "selected globaldata verification write field '${GLOBALDATA_WRITE_FIELD}'"

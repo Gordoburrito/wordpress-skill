@@ -40,6 +40,7 @@ See `skills/config.md` for path overrides.
 
 - Never expose secrets from the resolved env file.
 - Default mode is safe: schema pull, schema push dry-run, allowlist generation, content pull, and content push dry-run only.
+- Safe mode also verifies `page_sections` component-option keys when they exist on the checked resource.
 - When `PREFLIGHT_GLOBALDATA_ID` is set, safe mode also verifies a `globaldata` pull and dry-run push.
 - `--live` performs a schema apply plus one temporary content update with rollback.
 - Refuse to run if the resolved `ACF_JSON_DIR` is dirty unless `--allow-dirty` is set.
